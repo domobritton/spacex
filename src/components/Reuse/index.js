@@ -16,7 +16,6 @@ export default class Reuse extends Component {
               <Image />
               <StyledScrollThree
                 playScale={1}
-                always={false}
                 id="page3">
                 <StyledTweenTitle animation={{ opacity: 1 }} key='t'>
                   PAGE 3

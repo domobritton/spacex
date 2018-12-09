@@ -5,8 +5,8 @@ import LaunchPads from './LaunchPads'
 import Launches from './Launches'
 import Landings from './Landings'
 import Reuse from './Reuse'
-
-
+import About from './About'
+import { Tabss } from './Trial'
 export default class App extends Component {
   render() {
     return (
@@ -16,6 +16,7 @@ export default class App extends Component {
         <Landings />
         <LaunchPads />
         <Reuse />
+        <About /> 
       </>
     );
   }

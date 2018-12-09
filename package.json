@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "less": "^3.9.0",
     "rc-animate": "^2.6.0",
     "rc-queue-anim": "^1.6.8",
     "rc-scroll-anim": "^2.5.6",
@@ -11,6 +10,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
+    "react-tabs": "^2.3.0",
     "styled-components": "^4.1.2"
   },
   "scripts": {

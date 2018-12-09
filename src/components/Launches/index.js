@@ -21,7 +21,7 @@ export default class Launches extends Component {
                 id="page0"
                 replay
                 location="page0">
-                <StyledTweenTitle animation={{ opacity: 1 }} key='t'>
+                <StyledTweenTitle animation={{ opacity: 1 }} key='c'>
                   PAGE 0
                 </StyledTweenTitle>
                 <Animate key="0" transitionName="fade" transitionAppear>
