@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import TweenOne from 'rc-tween-one'
-import Animate from 'rc-animate'
 import styled from 'styled-components'
 
 const ScrollOverPack = ScrollAnim.OverPack
@@ -30,42 +29,38 @@ export default class About extends Component {
         return (
             <Page>
               <Image />
-              <StyledScrollThree
+              <Scroll
                 playScale={1}
                 id="page4">
-                <Spacer />
-                <Animate key="6" transitionName="fade" transitionAppear>
-                  <ContentOne></ContentOne>
-                </Animate>
-                <StyledTweenOne
+                <Tween
                   animation={{ y: 0, opacity: 1 }}
                   key="7">
-                  <ContentTwo>    
+                  <Content>    
                       <Tabs>
-                        <TabList>
-                            <StyledTab>Title 1</StyledTab>
-                            <StyledTab>Title 2</StyledTab>
-                        </TabList>
+                        <Folder>
+                            <StyledTab>About</StyledTab>
+                            <StyledTab>Stats</StyledTab>
+                        </Folder>
                     
                         <TabPanel>
-                            <h2>{data.summary}</h2>
+                            <Item1>{data.summary}</Item1>
                         </TabPanel>
                         <TabPanel>
-                            <h2>Company Info</h2>
+                            <Title>Company Info</Title>
                            {data ? 
-                           <ul>
-                                <List>Founded: {data.founded}</List>
-                                <List>Employees: {data.employees}</List>
-                                <List>Launch Sites: {data.launch_sites}</List>
-                                <List>Test Sites: {data.test_sites}</List>
-                                <List>Rockets: {data.vehicles}</List>
-                            </ul> : <ul></ul>
+                           <List>
+                                <Item>Founded: {data.founded}</Item>
+                                <Item>Employees: {data.employees}</Item>
+                                <Item>Launch Sites: {data.launch_sites}</Item>
+                                <Item>Test Sites: {data.test_sites}</Item>
+                                <Item>Rockets: {data.vehicles}</Item>
+                            </List> : <List></List>
                         } 
                         </TabPanel>
                     </Tabs>
-                </ContentTwo>
-                </StyledTweenOne>
-              </StyledScrollThree>
+                </Content>
+                </Tween>
+              </Scroll>
             </Page>
         )
     }
@@ -78,53 +73,69 @@ const Page = styled.div `
     font-family: 'Noto Sans', sans-serif;
 `;
 
-const StyledScrollThree = styled(ScrollOverPack)`
+const Scroll = styled(ScrollOverPack)`
     background: transparent;
     width: 100%;
     height: 1000px;
-`;
-
-const Spacer = styled(TweenOne)`
-    width: 100%;
-    opacity: 0;
-    color: #fff;
-    font-size: 32px;
     padding-top: 10%;
-    text-align: center;
-    padding-bottom: 50px;
 `;
 
-const ContentOne = styled.div`
+const Content = styled.div`
     margin: 0 auto;
     width: 60%;
-    padding: 1px 80px;
-    text-align: center;
-    background-color: rgba(0,0,0,0.4);
-    border-radius: 4px;
-    color: #ffffff;
-    font-size: 2rem;
-`;
-
-const ContentTwo = styled.div`
-    margin: 0 auto;
-    width: 60%;
-    padding: 80px 10px;
+    padding: 10px;
+    height: 400px;
     background-color: rgba(0,0,0,0.4);
     margin-top: 20px;
     border-radius: 4px;
     color: #ffffff;
 `;
 
+const Folder = styled(TabList)`
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+`;
+
 const StyledTab = styled(Tab)`
     list-style: none;
     cursor: pointer;
+    color: #8d8d8d;
+    width: 100px;
+    height: 40px;
+    margin-right: 10px;
+    border-right: 1px solid orange;
+    border-bottom: 1px solid orange;
+    border-bottom-right-radius: 8px;
+    transition: all .35s ease-in-out;
+
+    &:hover {
+        color: white;
+        -webkit-box-shadow: 2px -1px 0px -1px orange;
+        -moz-box-shadow: 2px -1px 0px -1px orange;
+        box-shadow: 2px -1px 0px -1px orange;
+        
+    }
 `;
 
-const List = styled.li`
+const Title = styled.h2`
+    text-align: center;
+`;
+
+
+const List = styled.ul`
+    margin: 80px;
+`;
+
+const Item = styled.li`
     list-style: none;
 `;
 
-const StyledTweenOne = styled(TweenOne)`
+const Item1 = styled.p`
+    margin: 80px;
+`;
+
+const Tween = styled(TweenOne)`
     opacity: 0;
     transform: translateY(100px);
 `;
