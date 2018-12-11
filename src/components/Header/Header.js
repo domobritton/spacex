@@ -27,37 +27,37 @@ export default class Header extends Component {
         return (
             <Nav>
                 <Wrapper>
-                <StyledLink
-                    to="page0"
-                    showHeightActive="300"
-                    onFocus={this.onFocus}>
-                    Launches
-                </StyledLink>
-                <StyledLink
-                    to="page1"
-                    showHeightActive="300"
-                    onFocus={this.onFocus}>
-                    Landings
-                </StyledLink>
-                <StyledLink
-                    to="page2"
-                    showHeightActive="300"
-                    onFocus={this.onFocus}>
-                    Sites
-                </StyledLink>
-                <StyledLink
-                    to="page3"
-                    showHeightActive="300"
-                    onFocus={this.onFocus}>
-                    Reuse
-                </StyledLink>
-                <StyledLink
-                    to="page4"
-                    showHeightActive="300"
-                    onFocus={this.onFocus}>
-                    About
-                </StyledLink>
-                <NavBar ref={(c) => { this.bar = c; }} />
+                    <StyledLink
+                        to="page0"
+                        showHeightActive="300"
+                        onFocus={this.onFocus}>
+                        Launches
+                    </StyledLink>
+                    <StyledLink
+                        to="page1"
+                        showHeightActive="300"
+                        onFocus={this.onFocus}>
+                        Equipment
+                    </StyledLink>
+                    <StyledLink
+                        to="page2"
+                        showHeightActive="300"
+                        onFocus={this.onFocus}>
+                        History
+                    </StyledLink>
+                    <StyledLink
+                        to="page3"
+                        showHeightActive="300"
+                        onFocus={this.onFocus}>
+                        Reuse
+                    </StyledLink>
+                    <StyledLink
+                        to="page4"
+                        showHeightActive="300"
+                        onFocus={this.onFocus}>
+                        About
+                    </StyledLink>
+                    <NavBar ref={(c) => { this.bar = c; }} />
                 </Wrapper>
             </Nav>
         )
@@ -65,30 +65,33 @@ export default class Header extends Component {
 }
 
 const Nav = styled.div`
-    display: flex;
     position: fixed;
     top: 0;
-    justify-content: space-around;
-    align-items: center;
-    background: #303030;
+    background: #2D3436;
     color: #fff;
     width: 100vw;
     height: 58px;
-`
+    z-index: 99;
+`;
 
 const Wrapper = styled.div`
-    float: right;
-    padding-right: 30px;
-`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+`;
+
 const StyledLink = styled(Link)`
     width: 100px;
     height: 100%;
-    float: left;
     line-height: 58px;
     text-align: center;
     cursor: pointer;
-    transition: background .45s;
-`
+
+    @media all and (max-width: 768px) {
+        font-size: 14px;
+    }
+`;
 
 const NavBar = styled.div`
     width: 100px;
@@ -98,5 +101,9 @@ const NavBar = styled.div`
     height: 2px;
     background: #fff;
     transition: left .3s;
-`
+
+    @media all and (max-width: 768px) {
+        display: none;
+    }
+`;
 

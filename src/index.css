@@ -63,3 +63,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.button-forward, .button-back {
+    height: 28px !important;
+    width: 28px !important;
+}
+

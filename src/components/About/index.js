@@ -1,6 +1,6 @@
 import ScrollAnim from 'rc-scroll-anim'
 import React, { Component } from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 import TweenOne from 'rc-tween-one'
 import styled from 'styled-components'
@@ -18,7 +18,7 @@ export default class About extends Component {
   }
 
   componentDidMount() {
-    fetch('https://api.spacexdata.com/v2/info')
+    fetch('https://api.spacexdata.com/v3/info')
       .then(res => res.json())
       .then(data => this.setState({ data: data }))
       .catch(err => console.error(err));
@@ -43,10 +43,11 @@ export default class About extends Component {
                         </Folder>
                     
                         <TabPanel>
+                            <Title>ABOUT SPACEX</Title>
                             <Item1>{data.summary}</Item1>
                         </TabPanel>
                         <TabPanel>
-                            <Title>Company Info</Title>
+                            <Title>COMPANY INFO</Title>
                            {data ? 
                            <List>
                                 <Item>Founded: {data.founded}</Item>
@@ -54,8 +55,16 @@ export default class About extends Component {
                                 <Item>Launch Sites: {data.launch_sites}</Item>
                                 <Item>Test Sites: {data.test_sites}</Item>
                                 <Item>Rockets: {data.vehicles}</Item>
-                            </List> : <List></List>
+                            </List> : ''
                         } 
+                            <Title>COMPANY LEADERSHIP</Title>
+                            {data ? 
+                            <List>
+                                <Item>CEO: {data.ceo}</Item>
+                                <Item>COO: {data.coo}</Item>
+                                <Item>CTO: {data.cto}</Item>
+                            </List> : ''
+                        }
                         </TabPanel>
                     </Tabs>
                 </Content>
@@ -78,6 +87,10 @@ const Scroll = styled(ScrollOverPack)`
     width: 100%;
     height: 1000px;
     padding-top: 10%;
+
+    @media all and (max-width: 768px) {
+        padding-top: 15%;
+    }
 `;
 
 const Content = styled.div`
@@ -89,12 +102,22 @@ const Content = styled.div`
     margin-top: 20px;
     border-radius: 4px;
     color: #ffffff;
+
+    @media all and (max-width: 975px) {
+        width: 80%;
+    }
+
+    @media all and (max-width: 768px) {
+        width: 95%;
+        height: 75vh;
+    }
 `;
 
 const Folder = styled(TabList)`
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
+    margin-bottom: 40px;
 `;
 
 const StyledTab = styled(Tab)`
@@ -120,19 +143,39 @@ const StyledTab = styled(Tab)`
 
 const Title = styled.h2`
     text-align: center;
+    font-size: 30px;
+
+    @media all and (max-width: 768px) {
+        font-size: 25px;
+    }
 `;
 
 
 const List = styled.ul`
-    margin: 80px;
+    margin: 30px 80px;
+    display: flex;
+    justify-content: space-between;
+
+    @media all and (max-width: 768px) {
+        margin: 40px;
+    }
 `;
 
 const Item = styled.li`
     list-style: none;
-`;
 
+    @media all and (max-width: 768px) {
+        font-size: 12px;
+    }
+`;
+    
 const Item1 = styled.p`
     margin: 80px;
+    line-height: 24px;
+
+    @media all and (max-width: 768px) {
+        margin: 40px;
+    }
 `;
 
 const Tween = styled(TweenOne)`
