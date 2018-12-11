@@ -18,9 +18,9 @@ export default class About extends Component {
   }
 
   componentDidMount() {
-    fetch('https://api.spacexdata.com/v3/info')
+    fetch(`https://api.spacexdata.com/v3/info`)
       .then(res => res.json())
-      .then(data => this.setState({ data: data }))
+      .then(data => this.setState({ data }))
       .catch(err => console.error(err));
   }
 
@@ -28,46 +28,46 @@ export default class About extends Component {
         const { data } = this.state 
         return (
             <Page>
-              <HeroWrapper>
-                  <HeroImage src={`https://farm5.staticflickr.com/4760/40126462231_c11129efbe_k.jpg`} />
-              </HeroWrapper>
-              <Scroll
-                playScale={1}
-                id="page3">
-                <Tween
-                  animation={{ y: 0, opacity: 1 }}
-                  key="7">
-                  <Content>    
-                      <Tabs>
-                        <Folder>
-                            <StyledTab>About</StyledTab>
-                            <StyledTab>Stats</StyledTab>
-                        </Folder>
-                    
-                        <TabPanel>
-                            <Title>ABOUT SPACEX</Title>
-                            <Item1>{data.summary}</Item1>
-                        </TabPanel>
-                        <TabPanel>     
-                            <Title>COMPANY INFO</Title>
-                           <List>
-                                <Item>Founded: {data.founded}</Item>
-                                <Item>Employees: {data.employees}</Item>
-                                <Item>Launch Sites: {data.launch_sites}</Item>
-                                <Item>Test Sites: {data.test_sites}</Item>
-                                <Item>Rockets: {data.vehicles}</Item>
-                            </List>
-                            <Title>COMPANY LEADERSHIP</Title>
-                            <List>
-                                <Item>CEO: {data.ceo}</Item>
-                                <Item>COO: {data.coo}</Item>
-                                <Item>CTO: {data.cto}</Item>
-                            </List> 
-                        </TabPanel>
-                    </Tabs>
-                </Content>
-                </Tween>
-              </Scroll>
+                <HeroWrapper>
+                    <HeroImage src={`https://farm5.staticflickr.com/4760/40126462231_c11129efbe_k.jpg`} />
+                </HeroWrapper>
+                <Scroll
+                    playScale={1}
+                    id="page3">
+                    <Tween
+                    animation={{ y: 0, opacity: 1 }}
+                    key="7">
+                        <Content>    
+                            <Tabs>
+                                <Folder>
+                                    <StyledTab>About</StyledTab>
+                                    <StyledTab>Stats</StyledTab>
+                                </Folder>
+                            
+                                <TabPanel>
+                                    <Title>ABOUT SPACEX</Title>
+                                    <Item1>{data.summary}</Item1>
+                                </TabPanel>
+                                <TabPanel>     
+                                    <Title>COMPANY INFO</Title>
+                                    <List>
+                                        <Item>Founded: {data.founded}</Item>
+                                        <Item>Employees: {data.employees}</Item>
+                                        <Item>Launch Sites: {data.launch_sites}</Item>
+                                        <Item>Test Sites: {data.test_sites}</Item>
+                                        <Item>Rockets: {data.vehicles}</Item>
+                                    </List>
+                                    <Title>COMPANY LEADERSHIP</Title>
+                                    <List>
+                                        <Item>CEO: {data.ceo}</Item>
+                                        <Item>COO: {data.coo}</Item>
+                                        <Item>CTO: {data.cto}</Item>
+                                    </List> 
+                                </TabPanel>
+                            </Tabs>
+                        </Content>
+                    </Tween>
+                </Scroll>
             </Page>
         )
     }
