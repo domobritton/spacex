@@ -2,7 +2,7 @@ import ScrollAnim from 'rc-scroll-anim'
 import React, { Component } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import HorizontalTimeline from 'react-horizontal-timeline'
-import Example from '../Example'
+import LaunchBar from '../LaunchBar'
 
 import styled from 'styled-components'
 
@@ -13,12 +13,15 @@ export default class History extends Component {
 
   constructor() {
     super()
+
     this.state = {
       value: 0,
       previous: 0,
       history: [],
+      imageSwitch: false,
     }
-
+    this.switchImage = this.switchImage.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -26,6 +29,22 @@ export default class History extends Component {
       const historyRes = await fetch(`https://api.spacexdata.com/v3/history`)
       const history = await historyRes.json()
       this.setState({history})
+      window.addEventListener('scroll', this.handleScroll)
+    }
+
+    switchImage() {
+        const { imageSwitch } = this.state 
+        this.setState({ imageSwitch: !imageSwitch })
+    }
+
+    handleScroll() {
+        if (window.scrollY < 965) {
+            this.setState({ imageSwitch: false })
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
     handleClick(index) {
@@ -35,7 +54,6 @@ export default class History extends Component {
 
     get renderInfo() {
       const { history, value } = this.state 
-      debugger
       if (history.length < 1) { return null }
 
       return (
@@ -43,8 +61,8 @@ export default class History extends Component {
           <SubTitle>{history[value].title}</SubTitle>
           <Description>Flight Number: {history[value].flight_number}</Description>
           <Description>{history[value].details}
-          <Button><Link href={history[value].links.article} alt="spaceX article" target="_blank">More Info</Link></Button>
           </Description>
+          <Button><Link href={history[value].links.article} alt="spaceX article" target="_blank">More Info</Link></Button>
         </>
       )
     }
@@ -52,7 +70,7 @@ export default class History extends Component {
 
 
     render() {
-      const { history } = this.state
+      const { history, imageSwitch } = this.state
       let utcDate, localDate 
       const dates = history.map(data => {
         utcDate = data.event_date_utc
@@ -62,7 +80,12 @@ export default class History extends Component {
       
         return (
           <Page>
-            <Image />
+            <HeroWrapper>
+                {imageSwitch ? 
+                <HeroImage src={`https://farm2.staticflickr.com/1786/29700000688_49fdf9342e_k.jpg`} /> :
+                <HeroImage src={`https://farm1.staticflickr.com/967/42025498972_d022e2bf29_k.jpg`} />
+                }
+            </HeroWrapper>
             <Scroll
               playScale={1}
               id="page2">
@@ -70,9 +93,8 @@ export default class History extends Component {
                     <Tabs>
                       <Title>HISTORICAL EVENTS</Title>   
                       <Folder>
-                          <StyledTab>TIMELINE</StyledTab>
-                          <StyledTab>LAUNCH SUCCESS</StyledTab>
-                          <StyledTab>LANDING SUCCESS</StyledTab>
+                          <StyledTab onClick={() => this.switchImage()}>TIMELINE</StyledTab>
+                          <StyledTab onClick={() => this.switchImage()}>LAUNCH SUCCESS</StyledTab>
                       </Folder>
                   
                       <TabPanel>
@@ -93,17 +115,13 @@ export default class History extends Component {
                                   indexClick={(index) => this.handleClick(index)}
                                   values={ dates } />
                               </div>
-                              <div className='text-center'>
+                              <Wrapper>
                                 {this.renderInfo}    
-                                {this.state.value}
-                              </div>
+                              </Wrapper>
                           </Inner>
                       </TabPanel>
                       <TabPanel>
-                        <Example />
-                      </TabPanel>
-                      <TabPanel>
-
+                        <LaunchBar />
                       </TabPanel>
                   </Tabs>
               </Content>
@@ -218,34 +236,18 @@ const Inner = styled.div`
     height: 500px;
 `;
 
-const List = styled.ul`
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    align-items: center;
-    background: #1C1F1F;
-    height: 32px;
-
-    @media all and (max-width: 768px) {
-        margin: 40px;
-    }
-`;
-
-const Item = styled.li`
-    list-style: none;
-    color: #A7A8A8;
-    font-size: 12px;
-    font-weight: bold;
+const Wrapper = styled.div`
+    padding: 50px 20px;
 `;
 
 const SubTitle = styled.h3`
-    font-size: 20px;
+    font-size: 30px;
     color: #fff;
 `;
     
 const Description = styled.div`
     position: relative;
-    padding: 30px 10px;
+    padding: 15px 0;
     line-height: 24px;
 
     @media all and (max-width: 768px) {
@@ -271,18 +273,25 @@ const Link = styled.a`
     color: #A7A8A8;
 `;
 
-const Image = styled.div `
+const HeroWrapper = styled.div `
   position: absolute;
   top: 2000px;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("https://c1.staticflickr.com/5/4888/32040173048_b4a45010a0_m.jpg");
   background-color: #cccccc;
   height: 1000px; 
   background-position: center; 
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
+  overflow: hidden;
+`;
+
+const HeroImage = styled.img `
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 

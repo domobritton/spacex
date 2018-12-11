@@ -49,12 +49,6 @@ export default class Header extends Component {
                         to="page3"
                         showHeightActive="300"
                         onFocus={this.onFocus}>
-                        Reuse
-                    </StyledLink>
-                    <StyledLink
-                        to="page4"
-                        showHeightActive="300"
-                        onFocus={this.onFocus}>
                         About
                     </StyledLink>
                     <NavBar ref={(c) => { this.bar = c; }} />

@@ -4,7 +4,6 @@ import Header from './Header/Header'
 import History from './History'
 import Launches from './Launches'
 import Equipment from './Equipment'
-import Reuse from './Reuse'
 import About from './About'
 export default class App extends Component {
   render() {
@@ -14,7 +13,6 @@ export default class App extends Component {
         <Launches />
         <Equipment />
         <History />
-        <Reuse />
         <About /> 
       </>
     );

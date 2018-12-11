@@ -28,10 +28,12 @@ export default class About extends Component {
         const { data } = this.state 
         return (
             <Page>
-              <Image />
+              <HeroWrapper>
+                  <HeroImage src={`https://farm5.staticflickr.com/4760/40126462231_c11129efbe_k.jpg`} />
+              </HeroWrapper>
               <Scroll
                 playScale={1}
-                id="page4">
+                id="page3">
                 <Tween
                   animation={{ y: 0, opacity: 1 }}
                   key="7">
@@ -46,25 +48,21 @@ export default class About extends Component {
                             <Title>ABOUT SPACEX</Title>
                             <Item1>{data.summary}</Item1>
                         </TabPanel>
-                        <TabPanel>
+                        <TabPanel>     
                             <Title>COMPANY INFO</Title>
-                           {data ? 
                            <List>
                                 <Item>Founded: {data.founded}</Item>
                                 <Item>Employees: {data.employees}</Item>
                                 <Item>Launch Sites: {data.launch_sites}</Item>
                                 <Item>Test Sites: {data.test_sites}</Item>
                                 <Item>Rockets: {data.vehicles}</Item>
-                            </List> : ''
-                        } 
+                            </List>
                             <Title>COMPANY LEADERSHIP</Title>
-                            {data ? 
                             <List>
                                 <Item>CEO: {data.ceo}</Item>
                                 <Item>COO: {data.coo}</Item>
                                 <Item>CTO: {data.cto}</Item>
-                            </List> : ''
-                        }
+                            </List> 
                         </TabPanel>
                     </Tabs>
                 </Content>
@@ -86,7 +84,7 @@ const Scroll = styled(ScrollOverPack)`
     background: transparent;
     width: 100%;
     height: 1000px;
-    padding-top: 10%;
+    padding-top: 5%;
 
     @media all and (max-width: 768px) {
         padding-top: 15%;
@@ -95,16 +93,19 @@ const Scroll = styled(ScrollOverPack)`
 
 const Content = styled.div`
     margin: 0 auto;
-    width: 60%;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    width: 80vw;
     padding: 10px;
-    height: 400px;
+    height: 80vh;
     background-color: rgba(0,0,0,0.4);
-    margin-top: 20px;
+    margin-top: 2%;
     border-radius: 4px;
     color: #ffffff;
 
     @media all and (max-width: 975px) {
-        width: 80%;
+        width: 90%;
     }
 
     @media all and (max-width: 768px) {
@@ -143,7 +144,8 @@ const StyledTab = styled(Tab)`
 
 const Title = styled.h2`
     text-align: center;
-    font-size: 30px;
+    font-family: 'Exo', sans-serif;
+    font-size: 35px;
 
     @media all and (max-width: 768px) {
         font-size: 25px;
@@ -183,17 +185,24 @@ const Tween = styled(TweenOne)`
     transform: translateY(100px);
 `;
 
-const Image = styled.div `
-    position: absolute;
-    top: 4000px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("https://c1.staticflickr.com/5/4888/32040173048_b4a45010a0_m.jpg");
-    background-color: #cccccc;
-    height: 1000px; 
-    background-position: center; 
+const HeroWrapper = styled.div `
+  position: absolute;
+  top: 3000px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cccccc;
+  height: 1000px; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  overflow: hidden;
+`;
+
+const HeroImage = styled.img `
+    width: 100vw;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
 `;

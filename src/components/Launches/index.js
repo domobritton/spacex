@@ -87,7 +87,9 @@ export default class Launches extends Component {
 
     return (
           <Page>
-            <Image />
+            <HeroWrapper>
+              <HeroImage src={`https://farm1.staticflickr.com/914/29700004918_334cd5a572_k.jpg`} />
+            </HeroWrapper>
             <Scroll
               playScale={1}
               id="page0">
@@ -240,17 +242,24 @@ const Tween = styled(TweenOne)`
     transform: translateY(100px);
 `;
 
-const Image = styled.div`
+const HeroWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("https://farm5.staticflickr.com/4840/45473446114_fd0e11923d_k.jpg");
   background-color: #cccccc;
   height: 1000px; 
   background-position: center; 
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
+  overflow: hidden;
+`;
+
+const HeroImage = styled.img`
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `;

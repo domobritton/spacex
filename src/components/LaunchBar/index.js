@@ -10,7 +10,7 @@ import {
 } from 'react-vis';
 import styled from 'styled-components'
 
-export default class Example extends React.Component {
+export default class LaunchBar extends React.Component {
 
   constructor() {
     super()
@@ -18,9 +18,9 @@ export default class Example extends React.Component {
       launches: [],
       successData: [],
       failData: [],
-      width: 1025,
+      width: window.innerWidth - 250,
     }
-    this.dataArr = this.dataArr.bind(this)
+    this.launchSuccess = this.launchSuccess.bind(this)
     this.handleResize = this.handleResize.bind(this)
   }
 
@@ -28,28 +28,24 @@ export default class Example extends React.Component {
     const launchesRes = await fetch(`https://api.spacexdata.com/v3/launches/?launch_year/?launch_success/`)
     const launches = await launchesRes.json()
     this.setState({ launches })
-    // window.addEventListener('resize', this.handleResize)
-    this.dataArr()
+    window.addEventListener('resize', this.handleResize)
+    this.launchSuccess()
   }
 
   handleResize() {
-    let size = window.innerWidth
-    // if (size < 1274) {
-    //   this.setState({ width: window.innerWidth - 60})
-    // }
-    // if (size < 768) {
-    //   this.setState({ width: window.innerWidth - 60})
-    // }
-    // if (size < 650) {
-    //   this.setState({ width: window.innerWidth - 60})
-    // }
+    if (window.innerWidth < 768) {
+      this.setState({ width: window.innerWidth - 10})
+    }
+    if (window.innerWidth < 650) {
+      this.setState({ width: window.innerWidth - 20})
+    }
   }
 
   componentWillUnmount() {
-    // window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.handleResize)
   }
 
-  dataArr() {
+  launchSuccess() {
     const { launches } = this.state 
     const success = {2006: 0, 2007: 0}
     const fail = {2009: 0, 2010: 0, 2012: 0, 2013: 0, 2014: 0, 2017: 0, 2018: 0}
@@ -97,9 +93,9 @@ export default class Example extends React.Component {
           <VerticalBarSeries data={successData} color='white'/>
         </XYPlot>
         <Wrapper>
-          <Key></Key>
+          <WhiteKey></WhiteKey>
           <Description>Successful Missions</Description>
-          <Key></Key>
+          <OrangeKey></OrangeKey>
           <Description>Failed Missions</Description>
         </Wrapper>
       </Bar>
@@ -108,7 +104,7 @@ export default class Example extends React.Component {
 }
 
 const Bar = styled.div`
-  margin-top: 60px;
+  margin-top: 80px;
 `;
 
 const Wrapper = styled.div`
@@ -118,11 +114,19 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Key = styled.div`
+const WhiteKey = styled.div`
+  width: 25px;
+  height: 15px;
+  background: white;
+  border: 1px solid #8d8d8d;
+  border-radius: 3px;
+`;
+
+const OrangeKey = styled.div`
   width: 25px;
   height: 15px;
   background: orange;
-  border: 1px solid white;
+  border: 1px solid #8d8d8d;
   border-radius: 3px;
 `;
 
