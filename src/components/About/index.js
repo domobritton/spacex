@@ -40,8 +40,8 @@ export default class About extends Component {
                         <Content>    
                             <Tabs>
                                 <Folder>
-                                    <StyledTab>About</StyledTab>
-                                    <StyledTab>Stats</StyledTab>
+                                    <StyledTab>ABOUT</StyledTab>
+                                    <StyledTab>INFO</StyledTab>
                                 </Folder>
                             
                                 <TabPanel>
