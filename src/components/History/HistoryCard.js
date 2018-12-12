@@ -24,8 +24,8 @@ export default class HistoryCard extends Component {
             <Page>
                 <HeroWrapper>
                     {imageSwitch ? 
-                    <HeroImage src={`https://farm2.staticflickr.com/1786/29700000688_49fdf9342e_k.jpg`} /> :
-                    <HeroImage src={`https://farm1.staticflickr.com/967/42025498972_d022e2bf29_k.jpg`} />
+                    <HeroImage src={`https://farm1.staticflickr.com/967/42025498972_d022e2bf29_k.jpg`} /> :
+                    <HeroImage src={`https://farm2.staticflickr.com/1786/29700000688_49fdf9342e_k.jpg`} />
                     }
                 </HeroWrapper>
                 <Scroll
