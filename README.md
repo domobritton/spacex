@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a fan site for SpaceX and can be found at [https://spacex-fan.netlify.com/]https://spacex-fan.netlify.com/
+
+This project is not affiliated with the SpaceX company or any of its affiliates in any way.
+
+
 
 ## Available Scripts
 
