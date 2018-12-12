@@ -41,7 +41,7 @@ export default class HistoryCard extends Component {
                         
                             <TabPanel>
                                 <Inner>
-                                    <div style={{ width: '98%', height: '100px', margin: '0 auto', fontSize: '14px' }}>
+                                    <TimelineWrapper>
                                         <HorizontalTimeline
                                             labelWidth={100}
                                             isOpenBeginning={false}
@@ -55,8 +55,8 @@ export default class HistoryCard extends Component {
                                             }
                                             index={value}
                                             indexClick={(index) => handleClick(index)}
-                                            values={ dates } />
-                                    </div>
+                                            values={dates} />
+                                    </TimelineWrapper>
                                     <Wrapper>
                                         <RenderInfo history={history} value={value} />    
                                     </Wrapper>
@@ -139,6 +139,13 @@ const Folder = styled(TabList)`
     justify-content: flex-start;
     flex-direction: row;
     margin-bottom: 5px;
+`;
+
+const TimelineWrapper = styled.div`
+    width: 98%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 14px;
 `;
 
 const StyledTab = styled(Tab)`

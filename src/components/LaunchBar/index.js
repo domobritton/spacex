@@ -45,6 +45,11 @@ export default class LaunchBar extends React.Component {
     window.removeEventListener('resize', this.handleResize)
   }
 
+
+  // I should refactor
+  // function extracts successful && failed launch years && boolean
+  // counts the total of each per year from boolean
+  // AND reshapes this info into an object of data the bar graph can use
   launchSuccess() {
     const { launches } = this.state 
     const success = {2006: 0, 2007: 0}

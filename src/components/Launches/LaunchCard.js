@@ -32,28 +32,26 @@ export const LaunchCard = ({ columnDefs, upcomingRowData, pastRowData, onGridRea
                                 <StyledTab>UPCOMING</StyledTab>
                             </Folder>               
                             <TabPanel>
-                                <div 
-                                className='ag-theme-balham-dark' 
-                                style={{height: '74vh', width: '100%' }}>                  
+                                <GridWrapper 
+                                className='ag-theme-balham-dark'>                  
                                     <AgGridReact
                                         id='past'
                                         columnDefs={columnDefs}
                                         rowData={ pastRowData}
                                         onGridReady={onGridReady}>
                                     </AgGridReact>                       
-                                </div>
+                                </GridWrapper>
                             </TabPanel>
                             <TabPanel>
-                                <div 
-                                    className='ag-theme-balham-dark' 
-                                    style={{height: '74vh', width: '100%' }}>                  
+                                <GridWrapper 
+                                    className='ag-theme-balham-dark'>                  
                                     <AgGridReact
                                         id='upcoming'
                                         columnDefs={columnDefs}
                                         rowData={ upcomingRowData}
                                         onGridReady={onGridReady}>
                                     </AgGridReact>
-                                </div>
+                                </GridWrapper>
                             </TabPanel>
                         </Tabs>
                     </Content>
@@ -115,6 +113,11 @@ const Folder = styled(TabList)`
     justify-content: flex-start;
     flex-direction: row;
     margin-bottom: 5px;
+`;
+
+const GridWrapper = styled.div`
+    height: 74vh;
+    width: 100%;
 `;
 
 const StyledTab = styled(Tab)`

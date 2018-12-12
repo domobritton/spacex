@@ -30,12 +30,14 @@ export default class Header extends Component {
                     <StyledLink
                         to="page0"
                         showHeightActive="300"
+                        style={{marginRight: '25px'}}
                         onFocus={this.onFocus}>
                         Launches
                     </StyledLink>
                     <StyledLink
                         to="page1"
                         showHeightActive="300"
+                        style={{marginRight: '20px'}}
                         onFocus={this.onFocus}>
                         Equipment
                     </StyledLink>
