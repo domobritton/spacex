@@ -4,6 +4,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css'
 
 import { LaunchCard } from './LaunchCard'
+import apiGet from '../apiGet/apiGet'
 export default class Launches extends Component {
 
   constructor() {
@@ -19,34 +20,25 @@ export default class Launches extends Component {
       ],
       pastRowData: [],
       upcomingRowData: [],
+      upcoming: {},
+      past: {},
     }
     
     this.createRowData = this.createRowData.bind(this)
     this.onGridReady = this.onGridReady.bind(this)
   }
-  
-  async componentDidMount() {
-    const url = `https://api.spacexdata.com/v3/`
-    try {
-      const upcomingRes = await fetch(`${url}launches/upcoming`)
-      const pastRes = await fetch(`${url}launches/past/?order=desc`)
 
-      if (!upcomingRes.ok) {
-        throw Error(upcomingRes.statusText)
-      } else if (!pastRes.ok) {
-        throw Error(pastRes.statusText)
-      }
-      const upcoming = await upcomingRes.json()
-      const past = await pastRes.json()
-      this.createRowData(past, upcoming)
-    } catch (error) {
-      console.log(error);
-    }
+  async componentDidMount() {
+    const past = await apiGet(`launches/past/?order=desc`)
+    const upcoming = await apiGet(`launches/upcoming`)
+    this.setState({ upcoming, past })
+  
+    this.createRowData()
   }
 
-  createRowData(past, upcoming) {
+  createRowData() {
+    const { upcoming, past } = this.state 
     let utcDate, localDate
-
     const upcomingRowData = upcoming.map(data => {
       utcDate = data.launch_date_utc
       localDate = new Date(utcDate).toLocaleString()

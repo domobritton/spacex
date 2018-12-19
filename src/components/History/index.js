@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import HistoryCard from './HistoryCard'
+import apiGet from '../apiGet/apiGet';
 export default class History extends Component {
 
   constructor() {
@@ -18,17 +19,9 @@ export default class History extends Component {
   }
 
   async componentDidMount() {
-    const url = `https://api.spacexdata.com/v3/`
-    try {
-      const historyRes = await fetch(`${url}history`)
-      if (!historyRes.ok) {
-        throw Error(historyRes.statusText)
-      }
-      const history = await historyRes.json()
-      this.setState({ history })
-    } catch (error) {
-      console.log(error);
-    }
+    const history = await apiGet(`history`)
+    this.setState({ history })
+
     window.addEventListener('scroll', this.handleScroll)
   }
 

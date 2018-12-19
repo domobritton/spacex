@@ -9,6 +9,7 @@ import {
   VerticalBarSeries,
 } from 'react-vis';
 import styled from 'styled-components'
+import apiGet from '../apiGet/apiGet';
 
 export default class LaunchBar extends React.Component {
 
@@ -25,19 +26,8 @@ export default class LaunchBar extends React.Component {
   }
 
   async componentDidMount() {
-    const url = `https://api.spacexdata.com/v3/`
-    try {
-      const launchRes = await fetch(`${url}launches/?launch_year/?launch_success/`)
-      if (!launchRes.ok) {
-        throw Error(launchRes.statusText)
-      }
-      const launches = await launchRes.json()
-      this.setState({
-        launches
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    const launches = await apiGet(`launches/?launch_year/?launch_success/`)
+    this.setState({ launches })
 
     window.addEventListener('resize', this.handleResize)
     this.launchSuccess()

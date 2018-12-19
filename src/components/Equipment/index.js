@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { EquipmentCard } from './EquipmentCard'
+import apiGet from '../apiGet/apiGet';
 export default class Equipment extends Component {
   constructor() {
     super()
@@ -16,21 +17,10 @@ export default class Equipment extends Component {
   }
 
     async componentDidMount() {
-        const url = `https://api.spacexdata.com/v3/`
-        try {
-            const rocketsRes = await fetch(`${url}rockets`)
-            const roadsterRes = await fetch(`${url}roadster`)
-            if (!rocketsRes.ok) {
-                throw Error(rocketsRes.statusText)
-            } else if (!roadsterRes.ok) {
-                throw Error(roadsterRes.statusText)
-            }
-            const rockets = await rocketsRes.json()
-            const roadster = await roadsterRes.json()
-            this.setState({ rockets, roadster })
-        } catch (error) {
-            console.log(error);
-        }
+        const rockets = await apiGet(`rockets`)
+        const roadster = await apiGet(`roadster`)
+        this.setState({ rockets, roadster })
+
         window.addEventListener('scroll', this.handleScroll)
     }
 

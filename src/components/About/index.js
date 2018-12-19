@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 import TweenOne from 'rc-tween-one'
 import styled from 'styled-components'
+import apiGet from '../apiGet/apiGet'
 
 const ScrollOverPack = ScrollAnim.OverPack
 ScrollAnim.scrollScreen.init({ loop: true })
@@ -18,17 +19,8 @@ export default class About extends Component {
   }
 
   async componentDidMount() {
-      const url = `https://api.spacexdata.com/v3/`
-      try {
-          const response = await fetch(`${url}info`);
-          if (!response.ok) {
-              throw Error(response.statusText);
-          }
-          const data = await response.json();
-          this.setState({ data });
-      } catch (error) {
-          console.log(error);
-      }
+      const data = await apiGet(`info`)
+      this.setState({ data })
   }
 
     render() {
