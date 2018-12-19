@@ -16,12 +16,22 @@ export default class Equipment extends Component {
   }
 
     async componentDidMount() {
-      const rocketsRes = await fetch(`https://api.spacexdata.com/v3/rockets`)
-      const rockets = await rocketsRes.json()
-      const roadsterRes = await fetch(`https://api.spacexdata.com/v3/roadster`)
-      const roadster = await roadsterRes.json()
-      this.setState({ rockets, roadster })
-      window.addEventListener('scroll', this.handleScroll)
+        const url = `https://api.spacexdata.com/v3/`
+        try {
+            const rocketsRes = await fetch(`${url}rockets`)
+            const roadsterRes = await fetch(`${url}roadster`)
+            if (!rocketsRes.ok) {
+                throw Error(rocketsRes.statusText)
+            } else if (!roadsterRes.ok) {
+                throw Error(roadsterRes.statusText)
+            }
+            const rockets = await rocketsRes.json()
+            const roadster = await roadsterRes.json()
+            this.setState({ rockets, roadster })
+        } catch (error) {
+            console.log(error);
+        }
+        window.addEventListener('scroll', this.handleScroll)
     }
 
     switchImage() {

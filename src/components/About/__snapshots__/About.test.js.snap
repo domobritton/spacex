@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.img
+      src="https://farm5.staticflickr.com/4760/40126462231_c11129efbe_k.jpg"
+    />
+  </styled.div>
+  <Styled(ScrollOverPack)
+    id="page3"
+    playScale={1}
+  >
+    <Styled(TweenOne)
+      animation={
+        Object {
+          "opacity": 1,
+          "y": 0,
+        }
+      }
+      key="7"
+    >
+      <styled.div>
+        <Tabs
+          defaultFocus={false}
+          defaultIndex={null}
+          forceRenderTabPanel={false}
+          selectedIndex={null}
+        >
+          <Styled(TabList)>
+            <Styled(Tab)>
+              ABOUT
+            </Styled(Tab)>
+            <Styled(Tab)>
+              INFO
+            </Styled(Tab)>
+          </Styled(TabList)>
+          <TabPanel
+            className="react-tabs__tab-panel"
+            forceRender={false}
+            selectedClassName="react-tabs__tab-panel--selected"
+          >
+            <styled.h2>
+              ABOUT SPACEX
+            </styled.h2>
+            <styled.p />
+          </TabPanel>
+          <TabPanel
+            className="react-tabs__tab-panel"
+            forceRender={false}
+            selectedClassName="react-tabs__tab-panel--selected"
+          >
+            <styled.h2>
+              COMPANY INFO
+            </styled.h2>
+            <styled.ul>
+              <styled.li>
+                Founded: 
+              </styled.li>
+              <styled.li>
+                Employees: 
+              </styled.li>
+              <styled.li>
+                Launch Sites: 
+              </styled.li>
+              <styled.li>
+                Test Sites: 
+              </styled.li>
+              <styled.li>
+                Rockets: 
+              </styled.li>
+            </styled.ul>
+            <styled.h2>
+              COMPANY LEADERSHIP
+            </styled.h2>
+            <styled.ul>
+              <styled.li>
+                CEO: 
+              </styled.li>
+              <styled.li>
+                COO: 
+              </styled.li>
+              <styled.li>
+                CTO: 
+              </styled.li>
+            </styled.ul>
+          </TabPanel>
+        </Tabs>
+      </styled.div>
+    </Styled(TweenOne)>
+  </Styled(ScrollOverPack)>
+</styled.div>
+`;

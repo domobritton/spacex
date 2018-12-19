@@ -25,9 +25,20 @@ export default class LaunchBar extends React.Component {
   }
 
   async componentDidMount() {
-    const launchesRes = await fetch(`https://api.spacexdata.com/v3/launches/?launch_year/?launch_success/`)
-    const launches = await launchesRes.json()
-    this.setState({ launches })
+    const url = `https://api.spacexdata.com/v3/`
+    try {
+      const launchRes = await fetch(`${url}launches/?launch_year/?launch_success/`)
+      if (!launchRes.ok) {
+        throw Error(launchRes.statusText)
+      }
+      const launches = await launchRes.json()
+      this.setState({
+        launches
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
     window.addEventListener('resize', this.handleResize)
     this.launchSuccess()
   }

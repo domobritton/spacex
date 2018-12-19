@@ -17,11 +17,18 @@ export default class About extends Component {
         }
   }
 
-  componentDidMount() {
-    fetch(`https://api.spacexdata.com/v3/info`)
-      .then(res => res.json())
-      .then(data => this.setState({ data }))
-      .catch(err => console.error(err));
+  async componentDidMount() {
+      const url = `https://api.spacexdata.com/v3/`
+      try {
+          const response = await fetch(`${url}info`);
+          if (!response.ok) {
+              throw Error(response.statusText);
+          }
+          const data = await response.json();
+          this.setState({ data });
+      } catch (error) {
+          console.log(error);
+      }
   }
 
     render() {
@@ -133,7 +140,7 @@ const StyledTab = styled(Tab)`
     border-bottom-right-radius: 8px;
     transition: all .35s ease-in-out;
 
-    &:hover {
+    &:hover, &.react-tabs__tab--selected {
         color: white;
         -webkit-box-shadow: 2px -1px 0px -1px orange;
         -moz-box-shadow: 2px -1px 0px -1px orange;

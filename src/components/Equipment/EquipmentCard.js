@@ -92,7 +92,7 @@ const RoadsterCard = ({ roadster }) => {
     )
 }
 
-const Page = styled.div `
+const Page = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,8 +104,7 @@ const Page = styled.div `
     font-family: 'Noto Sans', sans-serif;
 `;
 
-const Scroll = styled(ScrollOverPack)
-`
+const Scroll = styled(ScrollOverPack)`
     background: transparent;
     width: 100%;
     height: 1000px;
@@ -116,7 +115,7 @@ const Scroll = styled(ScrollOverPack)
     }
 `;
 
-const Content = styled.div `
+const Content = styled.div`
     margin: 0 auto;
     flex-grow: 1;
     position: relative;
@@ -139,16 +138,14 @@ const Content = styled.div `
     }
 `;
 
-const Folder = styled(TabList)
-`
+const Folder = styled(TabList)`
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     margin-bottom: 5px;
 `;
 
-const StyledTab = styled(Tab)
-`
+const StyledTab = styled(Tab)`
     list-style: none;
     cursor: pointer;
     color: #8d8d8d;
@@ -168,7 +165,7 @@ const StyledTab = styled(Tab)
     }
 `;
 
-const Title = styled.h2 `
+const Title = styled.h2`
     position: absolute;
     top: 10px;
     right: 10px;
@@ -189,12 +186,12 @@ const Title = styled.h2 `
     }
 `;
 
-const SubTitle = styled.h3 `
+const SubTitle = styled.h3`
     font-size: 30px;
     margin: 50px 20px 30px;
 `;
 
-const Inner = styled.div `
+const Inner = styled.div`
     overflow-y: scroll;
     overflow-x: hidden;
     background: #2D3436;
@@ -203,7 +200,7 @@ const Inner = styled.div `
     height: 500px;
 `;
 
-const List = styled.ul `
+const List = styled.ul`
     display: flex;
     position: relative;
     justify-content: space-around;
@@ -216,14 +213,14 @@ const List = styled.ul `
     }
 `;
 
-const Item = styled.li `
+const Item = styled.li`
     list-style: none;
     color: #A7A8A8;
     font-size: 12px;
     font-weight: bold;
 `;
 
-const Description = styled.div `
+const Description = styled.div`
     position: relative;
     padding: 40px 20px;
     line-height: 24px;
@@ -233,19 +230,19 @@ const Description = styled.div `
     }
 `;
 
-const Images = styled.div `
+const Images = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 30px;
 `;
 
-const TeslaImg = styled.img `
+const TeslaImg = styled.img`
     width: 22.5%;
     overflow: hidden;
 `;
 
-const Button = styled.button `
+const Button = styled.button`
     position: absolute;
     bottom: 10px;
     right: 15px;
@@ -264,12 +261,12 @@ const Button = styled.button `
     }
 `;
 
-const Link = styled.a `
+const Link = styled.a`
     text-decoration: none;
     color: inherit;
 `;
 
-const HeroWrapper = styled.div `
+const HeroWrapper = styled.div`
   position: absolute;
   top: 1000px;
   left: 0;
@@ -284,7 +281,7 @@ const HeroWrapper = styled.div `
   overflow: hidden;
 `;
 
-const HeroImage = styled.img `
+const HeroImage = styled.img`
     width: 100vw;
     background-position: center;
     background-repeat: no-repeat;

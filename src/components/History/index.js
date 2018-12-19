@@ -17,32 +17,40 @@ export default class History extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-    async componentDidMount() {
-      const historyRes = await fetch(`https://api.spacexdata.com/v3/history`)
+  async componentDidMount() {
+    const url = `https://api.spacexdata.com/v3/`
+    try {
+      const historyRes = await fetch(`${url}history`)
+      if (!historyRes.ok) {
+        throw Error(historyRes.statusText)
+      }
       const history = await historyRes.json()
-      this.setState({history})
-      window.addEventListener('scroll', this.handleScroll)
+      this.setState({ history })
+    } catch (error) {
+      console.log(error);
     }
+    window.addEventListener('scroll', this.handleScroll)
+  }
 
-    switchImage() {
-        const { imageSwitch } = this.state 
-        this.setState({ imageSwitch: !imageSwitch })
-    }
+  switchImage() {
+      const { imageSwitch } = this.state 
+      this.setState({ imageSwitch: !imageSwitch })
+  }
 
-    handleScroll() {
-        if (window.scrollY < 965) {
-            this.setState({ imageSwitch: false })
-        }
-    }
+  handleScroll() {
+      if (window.scrollY < 965) {
+          this.setState({ imageSwitch: false })
+      }
+  }
 
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll)
-    }
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll)
+  }
 
-    handleClick(index) {
-      const { value } = this.state 
-      this.setState({ value: index, previous: value })
-    }
+  handleClick(index) {
+    const { value } = this.state 
+    this.setState({ value: index, previous: value })
+  }
 
     render() {
       const { history, imageSwitch, value } = this.state

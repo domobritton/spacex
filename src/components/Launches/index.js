@@ -1,14 +1,9 @@
-import ScrollAnim from 'rc-scroll-anim'
 import React, { Component } from 'react'
 
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css'
 
 import { LaunchCard } from './LaunchCard'
-
-const ScrollOverPack = ScrollAnim.OverPack
-ScrollAnim.scrollScreen.init({ loop: true })
-
 export default class Launches extends Component {
 
   constructor() {
@@ -31,11 +26,22 @@ export default class Launches extends Component {
   }
   
   async componentDidMount() {
-    const upcomingRes = await fetch(`https://api.spacexdata.com/v3/launches/upcoming`)
-    const upcoming = await upcomingRes.json() 
-    const pastRes = await fetch(`https://api.spacexdata.com/v3/launches/past/?order=desc`)
-    const past = await pastRes.json()
-    this.createRowData(past, upcoming)
+    const url = `https://api.spacexdata.com/v3/`
+    try {
+      const upcomingRes = await fetch(`${url}launches/upcoming`)
+      const pastRes = await fetch(`${url}launches/past/?order=desc`)
+
+      if (!upcomingRes.ok) {
+        throw Error(upcomingRes.statusText)
+      } else if (!pastRes.ok) {
+        throw Error(pastRes.statusText)
+      }
+      const upcoming = await upcomingRes.json()
+      const past = await pastRes.json()
+      this.createRowData(past, upcoming)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   createRowData(past, upcoming) {
