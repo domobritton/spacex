@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <ul
+    class="sc-bdVaJa hmxnZd"
+  >
+    <li
+      class="sc-bwzfXH eEHmLi"
+    >
+      Rocket: Falcon9
+    </li>
+    <li
+      class="sc-bwzfXH eEHmLi"
+    >
+      First Flight: 2018-02-06
+    </li>
+    <li
+      class="sc-bwzfXH eEHmLi"
+    >
+      Cost Per Launch: $ 9000000
+    </li>
+  </ul>,
+  <div
+    class="sc-htpNat jfsnjd"
+  >
+    it launched
+    <button
+      class="sc-bxivhb jMglcQ"
+    >
+      <a
+        alt="wikipedia link"
+        class="sc-ifAKCX iopqdy"
+        href="its a spacex rocket"
+        target="_blank"
+      >
+        MORE INFO
+      </a>
+    </button>
+  </div>,
+]
+`;

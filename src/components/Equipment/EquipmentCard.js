@@ -3,6 +3,9 @@ import ScrollAnim from 'rc-scroll-anim'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import styled from 'styled-components'
 
+import { RocketCard } from './RocketCard'
+import { RoadsterCard } from './RoadsterCard'
+
 const ScrollOverPack = ScrollAnim.OverPack
 ScrollAnim.scrollScreen.init({ loop: true })
 
@@ -44,55 +47,7 @@ export const EquipmentCard = ({imageSwitch, roadster, rockets, switchImage }) =>
       )
 }
 
-const RocketCard = ({ rockets }) => {
-    return rockets.map(data => (
-          <React.Fragment key={data.id}>
-            <List>
-                <Item>Rocket: {data.rocket_name}</Item>
-                <Item>First Flight: {data.first_flight}</Item>
-                <Item>Cost Per Launch: $ {data.cost_per_launch}</Item>
-            </List>
-            <Description>
-                {data.description}
-                <Button>
-                    <Link href={data.wikipedia} alt='wikipedia link' target='_blank'>MORE INFO</Link>
-                </Button>
-            </Description>
-          </React.Fragment>
-        )
-    )
-}
-
-const RoadsterCard = ({ roadster }) => {
-    if (roadster.length < 1) { return null }
-    let utcDate = roadster.launch_date_utc
-    let localDate = new Date(utcDate).toLocaleDateString()
-    let distance = (Math.round(roadster.earth_distance_mi * 100) / 100).toString()
-    let speed = (Math.round(roadster.speed_mph * 100) / 100).toString() 
-
-    return (
-        <>
-            <List>
-                <Item>Launch Date: {localDate}</Item>
-                <Item>Distance From Earth: {distance} miles</Item>
-                <Item>Travel Speed: {speed} miles per hour</Item>
-                <Item>Orbit Type: {roadster.orbit_type}</Item>
-            </List>
-            <SubTitle>{roadster.name}</SubTitle>
-            <Description>
-            {roadster.details}
-            <Images>
-                <TeslaImg src={roadster.flickr_images[0]} />
-                <TeslaImg src={roadster.flickr_images[1]} />
-                <TeslaImg src={roadster.flickr_images[2]} />
-                <TeslaImg src={roadster.flickr_images[3]} />
-            </Images>
-            </Description>
-        </>
-    )
-}
-
-const Page = styled.div `
+const Page = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,9 +58,9 @@ const Page = styled.div `
     width: 100vw;
     font-family: 'Noto Sans', sans-serif;
 `;
+Page.displayName = 'Page'
 
-const Scroll = styled(ScrollOverPack)
-`
+const Scroll = styled(ScrollOverPack)`
     background: transparent;
     width: 100%;
     height: 1000px;
@@ -115,8 +70,9 @@ const Scroll = styled(ScrollOverPack)
         padding-top: 15%;
     }
 `;
+Scroll.displayName = 'Scroll'
 
-const Content = styled.div `
+const Content = styled.div`
     margin: 0 auto;
     flex-grow: 1;
     position: relative;
@@ -138,17 +94,17 @@ const Content = styled.div `
         height: 75vh;
     }
 `;
+Content.displayName = 'Content'
 
-const Folder = styled(TabList)
-`
+const Folder = styled(TabList)`
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     margin-bottom: 5px;
 `;
+Folder.displayName = 'Folder'
 
-const StyledTab = styled(Tab)
-`
+const StyledTab = styled(Tab)`
     list-style: none;
     cursor: pointer;
     color: #8d8d8d;
@@ -167,8 +123,9 @@ const StyledTab = styled(Tab)
         box-shadow: 2px -1px 0px -1px orange;     
     }
 `;
+StyledTab.displayName = 'StyledTab'
 
-const Title = styled.h2 `
+const Title = styled.h2`
     position: absolute;
     top: 10px;
     right: 10px;
@@ -188,13 +145,15 @@ const Title = styled.h2 `
       display: none;
     }
 `;
+Title.displayName = 'Title'
 
-const SubTitle = styled.h3 `
+const SubTitle = styled.h3`
     font-size: 30px;
     margin: 50px 20px 30px;
 `;
+SubTitle.displayName = 'Subtitle'
 
-const Inner = styled.div `
+const Inner = styled.div`
     overflow-y: scroll;
     overflow-x: hidden;
     background: #2D3436;
@@ -202,8 +161,9 @@ const Inner = styled.div `
     width: 100%;
     height: 500px;
 `;
+Inner.displayName = 'Inner'
 
-const List = styled.ul `
+const List = styled.ul`
     display: flex;
     position: relative;
     justify-content: space-around;
@@ -215,15 +175,17 @@ const List = styled.ul `
         margin: 40px;
     }
 `;
+List.displayName = 'List'
 
-const Item = styled.li `
+const Item = styled.li`
     list-style: none;
     color: #A7A8A8;
     font-size: 12px;
     font-weight: bold;
 `;
+Item.displayName = 'Item'
 
-const Description = styled.div `
+const Description = styled.div`
     position: relative;
     padding: 40px 20px;
     line-height: 24px;
@@ -232,20 +194,23 @@ const Description = styled.div `
         margin: 40px;
     }
 `;
+Description.displayName = 'Description'
 
-const Images = styled.div `
+const Images = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 30px;
 `;
+Images.displayName = 'Images'
 
-const TeslaImg = styled.img `
+const TeslaImg = styled.img`
     width: 22.5%;
     overflow: hidden;
 `;
+TeslaImg.displayName = 'TeslaImg'
 
-const Button = styled.button `
+const Button = styled.button`
     position: absolute;
     bottom: 10px;
     right: 15px;
@@ -263,13 +228,15 @@ const Button = styled.button `
         color: #ffffff;
     }
 `;
+Button.displayName = 'Button'
 
-const Link = styled.a `
+const Link = styled.a`
     text-decoration: none;
     color: inherit;
 `;
+Link.displayName = 'Link'
 
-const HeroWrapper = styled.div `
+const HeroWrapper = styled.div`
   position: absolute;
   top: 1000px;
   left: 0;
@@ -283,10 +250,12 @@ const HeroWrapper = styled.div `
   z-index: -1;
   overflow: hidden;
 `;
+HeroWrapper.displayName = 'HeroWrapper'
 
-const HeroImage = styled.img `
+const HeroImage = styled.img`
     width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 `;
+HeroImage.displayName = 'HeroImage'

@@ -5,6 +5,9 @@
   "dependencies": {
     "ag-grid-community": "^19.1.4",
     "ag-grid-react": "^19.1.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
     "rc-animate": "^2.6.0",
     "rc-queue-anim": "^1.6.8",
     "rc-scroll-anim": "^2.5.6",
@@ -15,6 +18,7 @@
     "react-scripts": "2.1.1",
     "react-tabs": "^2.3.0",
     "react-vis": "^1.11.5",
+    "sinon": "^7.2.2",
     "styled-components": "^4.1.2"
   },
   "scripts": {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import HistoryCard from './HistoryCard'
+import apiGet from '../apiGet/apiGet';
 export default class History extends Component {
 
   constructor() {
@@ -17,32 +18,32 @@ export default class History extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-    async componentDidMount() {
-      const historyRes = await fetch(`https://api.spacexdata.com/v3/history`)
-      const history = await historyRes.json()
-      this.setState({history})
-      window.addEventListener('scroll', this.handleScroll)
-    }
+  async componentDidMount() {
+    const history = await apiGet(`history`)
+    this.setState({ history })
 
-    switchImage() {
-        const { imageSwitch } = this.state 
-        this.setState({ imageSwitch: !imageSwitch })
-    }
+    window.addEventListener('scroll', this.handleScroll)
+  }
 
-    handleScroll() {
-        if (window.scrollY < 965) {
-            this.setState({ imageSwitch: false })
-        }
-    }
+  switchImage() {
+      const { imageSwitch } = this.state 
+      this.setState({ imageSwitch: !imageSwitch })
+  }
 
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll)
-    }
+  handleScroll() {
+      if (window.scrollY < 965) {
+          this.setState({ imageSwitch: false })
+      }
+  }
 
-    handleClick(index) {
-      const { value } = this.state 
-      this.setState({ value: index, previous: value })
-    }
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll)
+  }
+
+  handleClick(index) {
+    const { value } = this.state 
+    this.setState({ value: index, previous: value })
+  }
 
     render() {
       const { history, imageSwitch, value } = this.state

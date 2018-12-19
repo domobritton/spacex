@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  class="sc-bdVaJa jlEEeY"
+>
+  <div
+    class="sc-htoDjs eXQnAR"
+  >
+    <img
+      class="sc-dnqmqq jEeNwQ"
+      src="https://farm1.staticflickr.com/914/29700004918_334cd5a572_k.jpg"
+    />
+  </div>
+  <div
+    class="sc-bwzfXH laKkuO"
+    id="page0"
+  >
+    <div
+      class="sc-gzVnrw gWPIsY"
+    >
+      <div
+        class="sc-htpNat eETVwq"
+      >
+        <div
+          class="react-tabs"
+          data-tabs="true"
+        >
+          <h2
+            class="sc-bZQynM imHivE"
+          >
+            Past and Upcoming Launches
+          </h2>
+          <ul
+            class="sc-bxivhb juzPeT"
+            role="tablist"
+          >
+            <li
+              aria-controls="react-tabs-1"
+              aria-disabled="false"
+              aria-selected="true"
+              class="sc-EHOje eWLKGe react-tabs__tab--selected"
+              id="react-tabs-0"
+              role="tab"
+              tabindex="0"
+            >
+              PAST
+            </li>
+            <li
+              aria-controls="react-tabs-3"
+              aria-disabled="false"
+              aria-selected="false"
+              class="sc-EHOje eWLKGe"
+              id="react-tabs-2"
+              role="tab"
+            >
+              UPCOMING
+            </li>
+          </ul>
+          <div
+            aria-labelledby="react-tabs-0"
+            class="react-tabs__tab-panel react-tabs__tab-panel--selected"
+            id="react-tabs-1"
+            role="tabpanel"
+          >
+            <div
+              class="ag-theme-balham-dark sc-ifAKCX cBMSud"
+            >
+              <div
+                style="height:100%"
+              />
+            </div>
+          </div>
+          <div
+            aria-labelledby="react-tabs-2"
+            class="react-tabs__tab-panel"
+            id="react-tabs-3"
+            role="tabpanel"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

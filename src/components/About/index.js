@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 import TweenOne from 'rc-tween-one'
 import styled from 'styled-components'
+import apiGet from '../apiGet/apiGet'
 
 const ScrollOverPack = ScrollAnim.OverPack
 ScrollAnim.scrollScreen.init({ loop: true })
@@ -13,19 +14,18 @@ export default class About extends Component {
         super()
 
         this.state = {
-            data: [],
+            company: {},
         }
   }
 
-  componentDidMount() {
-    fetch(`https://api.spacexdata.com/v3/info`)
-      .then(res => res.json())
-      .then(data => this.setState({ data }))
-      .catch(err => console.error(err));
+  async componentDidMount() {
+      const company = await apiGet(`info`)
+      this.setState({ company })
   }
 
     render() {
-        const { data } = this.state 
+        const { company } = this.state 
+     
         return (
             <Page>
                 <HeroWrapper>
@@ -46,22 +46,22 @@ export default class About extends Component {
                             
                                 <TabPanel>
                                     <Title>ABOUT SPACEX</Title>
-                                    <Item1>{data.summary}</Item1>
+                                    <Item1>{company.summary}</Item1>
                                 </TabPanel>
                                 <TabPanel>     
                                     <Title>COMPANY INFO</Title>
                                     <List>
-                                        <Item>Founded: {data.founded}</Item>
-                                        <Item>Employees: {data.employees}</Item>
-                                        <Item>Launch Sites: {data.launch_sites}</Item>
-                                        <Item>Test Sites: {data.test_sites}</Item>
-                                        <Item>Rockets: {data.vehicles}</Item>
+                                        <Item>Founded: {company.founded}</Item>
+                                        <Item>Employees: {company.employees}</Item>
+                                        <Item>Launch Sites: {company.launch_sites}</Item>
+                                        <Item>Test Sites: {company.test_sites}</Item>
+                                        <Item>Rockets: {company.vehicles}</Item>
                                     </List>
                                     <Title>COMPANY LEADERSHIP</Title>
                                     <List>
-                                        <Item>CEO: {data.ceo}</Item>
-                                        <Item>COO: {data.coo}</Item>
-                                        <Item>CTO: {data.cto}</Item>
+                                        <Item>CEO: {company.ceo}</Item>
+                                        <Item>COO: {company.coo}</Item>
+                                        <Item>CTO: {company.cto}</Item>
                                     </List> 
                                 </TabPanel>
                             </Tabs>
@@ -133,7 +133,7 @@ const StyledTab = styled(Tab)`
     border-bottom-right-radius: 8px;
     transition: all .35s ease-in-out;
 
-    &:hover {
+    &:hover, &.react-tabs__tab--selected {
         color: white;
         -webkit-box-shadow: 2px -1px 0px -1px orange;
         -moz-box-shadow: 2px -1px 0px -1px orange;
