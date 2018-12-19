@@ -167,6 +167,7 @@ const StyledTab = styled(Tab)`
         box-shadow: 2px -1px 0px -1px orange;     
     }
 `;
+StyledTab.displayName = 'StyledTab'
 
 const Title = styled.h2`
     position: absolute;

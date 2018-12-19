@@ -41,7 +41,7 @@ export default class Equipment extends Component {
 
     render() {
         const { imageSwitch, roadster, rockets } = this.state 
-
+        
     return (
         <EquipmentCard 
             imageSwitch={imageSwitch} 

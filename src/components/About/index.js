@@ -14,17 +14,18 @@ export default class About extends Component {
         super()
 
         this.state = {
-            data: [],
+            company: {},
         }
   }
 
   async componentDidMount() {
-      const data = await apiGet(`info`)
-      this.setState({ data })
+      const company = await apiGet(`info`)
+      this.setState({ company })
   }
 
     render() {
-        const { data } = this.state 
+        const { company } = this.state 
+     
         return (
             <Page>
                 <HeroWrapper>
@@ -45,22 +46,22 @@ export default class About extends Component {
                             
                                 <TabPanel>
                                     <Title>ABOUT SPACEX</Title>
-                                    <Item1>{data.summary}</Item1>
+                                    <Item1>{company.summary}</Item1>
                                 </TabPanel>
                                 <TabPanel>     
                                     <Title>COMPANY INFO</Title>
                                     <List>
-                                        <Item>Founded: {data.founded}</Item>
-                                        <Item>Employees: {data.employees}</Item>
-                                        <Item>Launch Sites: {data.launch_sites}</Item>
-                                        <Item>Test Sites: {data.test_sites}</Item>
-                                        <Item>Rockets: {data.vehicles}</Item>
+                                        <Item>Founded: {company.founded}</Item>
+                                        <Item>Employees: {company.employees}</Item>
+                                        <Item>Launch Sites: {company.launch_sites}</Item>
+                                        <Item>Test Sites: {company.test_sites}</Item>
+                                        <Item>Rockets: {company.vehicles}</Item>
                                     </List>
                                     <Title>COMPANY LEADERSHIP</Title>
                                     <List>
-                                        <Item>CEO: {data.ceo}</Item>
-                                        <Item>COO: {data.coo}</Item>
-                                        <Item>CTO: {data.cto}</Item>
+                                        <Item>CEO: {company.ceo}</Item>
+                                        <Item>COO: {company.coo}</Item>
+                                        <Item>CTO: {company.cto}</Item>
                                     </List> 
                                 </TabPanel>
                             </Tabs>
