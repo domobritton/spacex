@@ -19,10 +19,10 @@ it('fetches company info and updates state', (done) => {
         wrapper.update()
 
         const state = wrapper.instance().state 
-
-        expect(state.rockets.launch_sites).toEqual(1)
-        expect(state.rockets.test_sites).toEqual(1)
-        expect(state.roadster.orbit_type).toEqual('heliocentric')
+       
+        expect(state.rockets[0].launch_sites).toEqual(1)
+        expect(state.rockets[0].test_sites).toEqual(1)
+        expect(state.roadster[0].orbit_type).toEqual('heliocentric')
 
         done()
     })

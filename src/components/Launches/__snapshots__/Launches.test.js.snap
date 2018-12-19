@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<LaunchCard
+  columnDefs={
+    Array [
+      Object {
+        "field": "name",
+        "headerName": "Mission Name",
+      },
+      Object {
+        "field": "number",
+        "headerName": "Flight Number",
+      },
+      Object {
+        "field": "date",
+        "headerName": "Launch Date",
+      },
+      Object {
+        "field": "rocket",
+        "headerName": "Rocket",
+      },
+      Object {
+        "field": "site",
+        "headerName": "Launch Site",
+      },
+    ]
+  }
+  onGridReady={[Function]}
+  pastRowData={Array []}
+  upcomingRowData={Array []}
+/>
+`;

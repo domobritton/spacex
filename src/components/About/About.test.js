@@ -19,10 +19,10 @@ it('fetches company info, updates state, and renders on mount', (done) => {
         wrapper.update()
 
         const state = wrapper.instance().state 
-       
-        expect(state.company.ceo).toEqual('Dom')
-        expect(state.company.name).toEqual('Front-End Dev')
-        expect(state.company.founded).toEqual(1974)
+     
+        expect(state.company[0].ceo).toEqual('Dom')
+        expect(state.company[0].name).toEqual('Front-End Dev')
+        expect(state.company[0].founded).toEqual(1974)
 
         done()
     })

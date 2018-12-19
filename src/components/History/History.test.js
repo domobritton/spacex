@@ -19,8 +19,8 @@ it('fetches company info and updates state', (done) => {
         wrapper.update()
 
         const state = wrapper.instance().state
-
-        expect(state.history.launch_sites).toEqual(1)
+        
+        expect(state.history[0].launch_sites).toEqual(1)
         done()
     })
 })

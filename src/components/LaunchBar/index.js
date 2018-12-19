@@ -53,6 +53,7 @@ export default class LaunchBar extends React.Component {
   // AND reshapes this info into an object of data the bar graph can use
   launchSuccess() {
     const { launches } = this.state 
+    if (launches.length < 1) { return null }
     const success = {2006: 0, 2007: 0}
     const fail = {2009: 0, 2010: 0, 2012: 0, 2013: 0, 2014: 0, 2017: 0, 2018: 0}
     launches.forEach(data => {

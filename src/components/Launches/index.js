@@ -20,8 +20,8 @@ export default class Launches extends Component {
       ],
       pastRowData: [],
       upcomingRowData: [],
-      upcoming: {},
-      past: {},
+      upcoming: [],
+      past: [],
     }
     
     this.createRowData = this.createRowData.bind(this)

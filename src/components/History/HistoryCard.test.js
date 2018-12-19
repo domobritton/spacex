@@ -8,8 +8,9 @@ const history = [
         'details': 'it was wow',
         'links': {
             'article': 'this article'
-        }
-
+        },
+        'launch_year': 2006,
+        'launch_success': false,
     }
 ]
 
@@ -20,6 +21,7 @@ it('renders correctly', () => {
 
     expect(wrapper).toMatchSnapshot()
 })
+
 
 it('toggles background image on click', () => {
     const spy = sinon.spy()

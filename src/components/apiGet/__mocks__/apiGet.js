@@ -1,4 +1,4 @@
-const fakeData = 
+const fakeData = [   
     {
         'name': 'Front-End Dev',
         'founder': 'Dom Adams',
@@ -9,9 +9,19 @@ const fakeData =
         'cto': 'Dom',
         'coo': 'Dom',
         'launch_sites': 1,
+        'launch_year': '2006',
+        'launch_success': false,
+        'mission_name': 'to the sky',
+        'flight_number': 1,
+        'launch_site': {
+            'site_name': 'one'
+        },
         'test_sites': 1,
         'summary': 'I build great web experiences',
         'id': 1,
+        'rocket': {
+            'rocket_name': 'Falcon9'
+        },
         'rocket_name': 'Falcon9',
         'first_flight': '2018-02-06',
         'cost_per_launch': 9000000,
@@ -29,6 +39,7 @@ const fakeData =
         ],
         'details': `Elon Musk's Tesla Roadster`
     }
+]
 
 export default async ext => {
     const response = await new Promise(resolve => {
