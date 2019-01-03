@@ -2,6 +2,7 @@ import React from 'react'
 import ScrollAnim from 'rc-scroll-anim'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import styled from 'styled-components'
+import TweenOne from 'rc-tween-one'
 
 import { RocketCard } from './RocketCard'
 import { RoadsterCard } from './RoadsterCard'
@@ -14,20 +15,24 @@ export const EquipmentCard = ({imageSwitch, roadster, rockets, switchImage }) =>
         return (
             <Page>
                 <HeroWrapper>
-                    {imageSwitch ? 
+                    {imageSwitch === 'b' ? 
                     <HeroImage src={roadster.flickr_images[1]} /> :
                     <HeroImage src={`https://farm5.staticflickr.com/4887/31180979107_d935b82634_k.jpg`} />
                     }
                 </HeroWrapper>
                 <Scroll
                 playScale={1}
+                replay
                 id="page1">
+                <Tween
+                animation={{ y: 0, opacity: 1 }}
+                key="1">
                     <Content> 
                         <Tabs>
                             <Title>SpaceX Equipment</Title>   
                             <Folder>
-                                <StyledTab onClick={() => switchImage()}>ROCKETS</StyledTab>
-                                <StyledTab onClick={() => switchImage()}>ROADSTER</StyledTab>
+                                <StyledTab onClick={(e) => switchImage('a', e)}>ROCKETS</StyledTab>
+                                <StyledTab onClick={(e) => switchImage('b', e)}>ROADSTER</StyledTab>
                             </Folder>
                         
                             <TabPanel>
@@ -42,6 +47,7 @@ export const EquipmentCard = ({imageSwitch, roadster, rockets, switchImage }) =>
                             </TabPanel>
                         </Tabs>
                     </Content>
+                    </Tween>
                 </Scroll>
           </Page>
       )
@@ -58,7 +64,6 @@ const Page = styled.div`
     width: 100vw;
     font-family: 'Noto Sans', sans-serif;
 `;
-Page.displayName = 'Page'
 
 const Scroll = styled(ScrollOverPack)`
     background: transparent;
@@ -70,7 +75,6 @@ const Scroll = styled(ScrollOverPack)`
         padding-top: 15%;
     }
 `;
-Scroll.displayName = 'Scroll'
 
 const Content = styled.div`
     margin: 0 auto;
@@ -91,10 +95,9 @@ const Content = styled.div`
 
     @media all and (max-width: 768px) {
         width: 95%;
-        height: 75vh;
+        height: 95vh;
     }
 `;
-Content.displayName = 'Content'
 
 const Folder = styled(TabList)`
     display: flex;
@@ -102,7 +105,6 @@ const Folder = styled(TabList)`
     flex-direction: row;
     margin-bottom: 5px;
 `;
-Folder.displayName = 'Folder'
 
 const StyledTab = styled(Tab)`
     list-style: none;
@@ -145,13 +147,6 @@ const Title = styled.h2`
       display: none;
     }
 `;
-Title.displayName = 'Title'
-
-const SubTitle = styled.h3`
-    font-size: 30px;
-    margin: 50px 20px 30px;
-`;
-SubTitle.displayName = 'Subtitle'
 
 const Inner = styled.div`
     overflow-y: scroll;
@@ -161,101 +156,28 @@ const Inner = styled.div`
     width: 100%;
     height: 500px;
 `;
-Inner.displayName = 'Inner'
 
-const List = styled.ul`
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    align-items: center;
-    background: #1C1F1F;
-    height: 32px;
-
-    @media all and (max-width: 768px) {
-        margin: 40px;
-    }
+const Tween = styled(TweenOne)`
+    opacity: 0;
+    transform: translateY(100px);
 `;
-List.displayName = 'List'
-
-const Item = styled.li`
-    list-style: none;
-    color: #A7A8A8;
-    font-size: 12px;
-    font-weight: bold;
-`;
-Item.displayName = 'Item'
-
-const Description = styled.div`
-    position: relative;
-    padding: 40px 20px;
-    line-height: 24px;
-
-    @media all and (max-width: 768px) {
-        margin: 40px;
-    }
-`;
-Description.displayName = 'Description'
-
-const Images = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 30px;
-`;
-Images.displayName = 'Images'
-
-const TeslaImg = styled.img`
-    width: 22.5%;
-    overflow: hidden;
-`;
-TeslaImg.displayName = 'TeslaImg'
-
-const Button = styled.button`
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    width: 100px;
-    height: 30px;
-    padding: 5px;
-    border: 1px solid orange;
-    border-radius: 5px;
-    background: transparent;
-    cursor: pointer;
-    color: #A7A8A8;
-    transition: all .35s ease-in-out;
-
-    &:hover {
-        color: #ffffff;
-    }
-`;
-Button.displayName = 'Button'
-
-const Link = styled.a`
-    text-decoration: none;
-    color: inherit;
-`;
-Link.displayName = 'Link'
 
 const HeroWrapper = styled.div`
-  position: absolute;
-  top: 1000px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #cccccc;
-  height: 1000px; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  overflow: hidden;
+    position: absolute;
+    top: 1000px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    height: 1000px; 
+    z-index: -1;
+    overflow: hidden;
 `;
-HeroWrapper.displayName = 'HeroWrapper'
 
 const HeroImage = styled.img`
-    width: 100vw;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    height: 100%;
 `;
-HeroImage.displayName = 'HeroImage'

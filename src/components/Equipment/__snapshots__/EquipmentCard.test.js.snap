@@ -2,23 +2,117 @@
 
 exports[`renders correctly 1`] = `
 <div
-  class="sc-gZMcBi NMtLk"
+  class="sc-fjdhpX kdxGkG"
 >
   <div
-    class="sc-eNQAEJ cQxiac"
+    class="sc-dxgOiQ lckwMX"
   >
     <img
-      class="sc-hMqMXs ZBmra"
+      class="sc-ckVGcZ iGhDiH"
       src="https://farm5.staticflickr.com/4887/31180979107_d935b82634_k.jpg"
     />
   </div>
   <div
-    class="sc-gqjmRU hqyvDs"
+    class="sc-jzJRlG iIfnLc"
     id="page1"
   >
     <div
-      class="sc-VigVT dJTkuw"
-    />
+      class="sc-kpOJdX iYAQkk"
+    >
+      <div
+        class="sc-cSHVUG cXDWkC"
+      >
+        <div
+          class="react-tabs"
+          data-tabs="true"
+        >
+          <h2
+            class="sc-kgoBCf effrUS"
+          >
+            SpaceX Equipment
+          </h2>
+          <ul
+            class="sc-kAzzGY iBGkWt"
+            role="tablist"
+          >
+            <li
+              aria-controls="react-tabs-1"
+              aria-disabled="false"
+              aria-selected="true"
+              class="sc-chPdSV gJhzVS react-tabs__tab--selected"
+              id="react-tabs-0"
+              role="tab"
+              tabindex="0"
+            >
+              ROCKETS
+            </li>
+            <li
+              aria-controls="react-tabs-3"
+              aria-disabled="false"
+              aria-selected="false"
+              class="sc-chPdSV gJhzVS"
+              id="react-tabs-2"
+              role="tab"
+            >
+              ROADSTER
+            </li>
+          </ul>
+          <div
+            aria-labelledby="react-tabs-0"
+            class="react-tabs__tab-panel react-tabs__tab-panel--selected"
+            id="react-tabs-1"
+            role="tabpanel"
+          >
+            <div
+              class="sc-kGXeez gKcjqM"
+            >
+              <ul
+                class="sc-htpNat lgZBte"
+              >
+                <li
+                  class="sc-bxivhb fnFCAt"
+                >
+                  Rocket: Falcon9
+                </li>
+                <li
+                  class="sc-bxivhb fnFCAt"
+                >
+                  First Flight: 2018-02-06
+                </li>
+                <li
+                  class="sc-bxivhb fnFCAt"
+                >
+                  Cost Per Launch: $ 9000000
+                </li>
+              </ul>
+              <div
+                class="sc-ifAKCX iwhyBn"
+              >
+                it launched
+                <button
+                  class="sc-EHOje dCMLGJ"
+                >
+                  <a
+                    alt="wikipedia link"
+                    class="sc-bZQynM iubAeK"
+                    href="its a spacex rocket"
+                    target="_blank"
+                  >
+                    MORE INFO
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-labelledby="react-tabs-2"
+            class="react-tabs__tab-panel"
+            id="react-tabs-3"
+            role="tabpanel"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

@@ -9,25 +9,44 @@ export const RoadsterCard = ({ roadster }) => {
 
     return (
         <>
-            <List>
-                <Item>Launch Date: {localDate}</Item>
-                <Item>Distance From Earth: {distance} miles</Item>
-                <Item>Travel Speed: {speed} miles per hour</Item>
-                <Item>Orbit Type: {roadster.orbit_type}</Item>
-            </List>
-            <SubTitle>{roadster.name}</SubTitle>
-            <Description>
-                {roadster.details}
-                <Images>
-                    <TeslaImg src={roadster.flickr_images[0]} />
-                    <TeslaImg src={roadster.flickr_images[1]} />
-                    <TeslaImg src={roadster.flickr_images[2]} />
-                    <TeslaImg src={roadster.flickr_images[3]} />
-                </Images>
-            </Description>
+            {roadster.length < 1 ? 
+                <Content>
+                    <Loading>No Info To Show</Loading>
+                </Content>
+            :
+            <>
+                <List>
+                    <Item>Launch Date: {localDate}</Item>
+                    <Item>Distance From Earth: {distance} miles</Item>
+                    <Item>Travel Speed: {speed} miles per hour</Item>
+                    <Item>Orbit Type: {roadster.orbit_type}</Item>
+                </List>
+                <SubTitle>{roadster.name}</SubTitle>
+                <Description>
+                    {roadster.details}
+                    <Images>
+                        <TeslaImg src={roadster.flickr_images[0]} />
+                        <TeslaImg src={roadster.flickr_images[1]} />
+                        <TeslaImg src={roadster.flickr_images[2]} />
+                        <TeslaImg src={roadster.flickr_images[3]} />
+                    </Images>
+                </Description>
+            </>
+            }
         </>
     )
 }
+
+const Content = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;
+
+const Loading = styled.div `
+  font-size: 12px;
+`;
 
 const List = styled.ul `
     display: flex;

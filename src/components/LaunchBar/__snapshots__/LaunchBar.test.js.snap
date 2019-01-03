@@ -1,56 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<styled.div>
-  <XYPlot
-    className=""
-    height={300}
-    stackBy="y"
-    width={774}
-    xType="ordinal"
-  >
-    <VerticalGridLines
-      attr="x"
-      direction="vertical"
-    />
-    <HorizontalGridLines
-      attr="y"
-      direction="horizontal"
-    />
-    <XAxis
-      attr="x"
-      attrAxis="y"
-      orientation="bottom"
-    />
-    <YAxis
-      attr="y"
-      attrAxis="x"
-      orientation="left"
-    />
-    <VerticalBarSeries
-      className=""
-      color="orange"
-      data={Array []}
-      stack={false}
-      style={Object {}}
-    />
-    <VerticalBarSeries
-      className=""
-      color="white"
-      data={Array []}
-      stack={false}
-      style={Object {}}
-    />
-  </XYPlot>
+<Fragment>
   <styled.div>
-    <styled.div />
-    <styled.p>
-      Successful Missions
-    </styled.p>
-    <styled.div />
-    <styled.p>
-      Failed Missions
-    </styled.p>
+    <styled.div>
+      No Bars To Show
+    </styled.div>
   </styled.div>
-</styled.div>
+</Fragment>
 `;

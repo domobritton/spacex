@@ -3,24 +3,24 @@
 exports[`renders correctly 1`] = `
 <div
   class="sc-bdVaJa jlEEeY"
+  id="page0"
 >
   <div
-    class="sc-htoDjs eXQnAR"
+    class="sc-htoDjs bQGtF"
   >
     <img
-      class="sc-dnqmqq jEeNwQ"
+      class="sc-dnqmqq ftRCvf"
       src="https://farm1.staticflickr.com/914/29700004918_334cd5a572_k.jpg"
     />
   </div>
   <div
     class="sc-bwzfXH laKkuO"
-    id="page0"
   >
     <div
       class="sc-gzVnrw gWPIsY"
     >
       <div
-        class="sc-htpNat eETVwq"
+        class="sc-htpNat jvnXHc"
       >
         <div
           class="react-tabs"

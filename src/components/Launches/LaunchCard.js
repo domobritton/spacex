@@ -8,19 +8,18 @@ import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css'
 
+const Element = ScrollAnim.Element
 const ScrollOverPack = ScrollAnim.OverPack
 ScrollAnim.scrollScreen.init({ loop: true })
 
 export const LaunchCard = ({ columnDefs, upcomingRowData, pastRowData, onGridReady }) => {
    
     return (
-        <Page>
+        <Page id='page0'>
             <HeroWrapper>
                 <HeroImage src={`https://farm1.staticflickr.com/914/29700004918_334cd5a572_k.jpg`} />
             </HeroWrapper>
-            <Scroll
-                playScale={1}
-                id="page0">
+            <Scroll>
                 <Tween
                 animation={{ y: 0, opacity: 1 }}
                 key="c">
@@ -62,7 +61,7 @@ export const LaunchCard = ({ columnDefs, upcomingRowData, pastRowData, onGridRea
 }
 
 
-const Page = styled.div `
+const Page = styled(Element)`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +73,7 @@ const Page = styled.div `
     font-family: 'Noto Sans', sans-serif;
 `;
 
-const Scroll = styled(ScrollOverPack)`
+const Scroll = styled.div`
     background: transparent;
     width: 100%;
     height: 1000px;
@@ -104,7 +103,7 @@ const Content = styled.div`
 
     @media all and (max-width: 768px) {
         width: 95%;
-        height: 75vh;
+        height: 95vh;
     }
 `;
 
@@ -167,23 +166,21 @@ const Tween = styled(TweenOne)`
 `;
 
 const HeroWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #cccccc;
-  height: 1000px; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    height: 1000px; 
+    z-index: -1;
+    overflow: hidden;
 `;
 
 const HeroImage = styled.img`
-    width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    height: 100%;
 `;

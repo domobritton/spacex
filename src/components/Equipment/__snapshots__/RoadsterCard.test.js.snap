@@ -3,55 +3,55 @@
 exports[`renders correctly 1`] = `
 Array [
   <ul
-    class="sc-bdVaJa hmxnZd"
+    class="sc-htpNat lgZBte"
   >
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       Launch Date: 2/6/2018
     </li>
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       Distance From Earth: 210452509 miles
     </li>
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       Travel Speed: 45362.55 miles per hour
     </li>
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       Orbit Type: heliocentric
     </li>
   </ul>,
   <h3
-    class="sc-htpNat lbrqdO"
+    class="sc-ifAKCX dZjjBd"
   >
     Elon Musk's Tesla Roadster
   </h3>,
   <div
-    class="sc-bxivhb CNtsX"
+    class="sc-EHOje bwRMDM"
   >
     Elon Musk's Tesla Roadster
     <div
-      class="sc-ifAKCX dRaxcw"
+      class="sc-bZQynM gRVtIP"
     >
       <img
-        class="sc-EHOje ikBWqV"
+        class="sc-gzVnrw fntuPG"
         src="https://farm5.staticflickr.com/4615/40143096241_11128929df_b.jpg"
       />
       <img
-        class="sc-EHOje ikBWqV"
+        class="sc-gzVnrw fntuPG"
         src="https://farm5.staticflickr.com/4702/40110298232_91b32d0cc0_b.jpg"
       />
       <img
-        class="sc-EHOje ikBWqV"
+        class="sc-gzVnrw fntuPG"
         src="https://farm5.staticflickr.com/4676/40110297852_5e794b3258_b.jpg"
       />
       <img
-        class="sc-EHOje ikBWqV"
+        class="sc-gzVnrw fntuPG"
         src="https://farm5.staticflickr.com/4745/40110304192_6e3e9a7a1b_b.jpg"
       />
     </div>

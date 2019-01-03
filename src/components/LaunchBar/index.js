@@ -26,7 +26,7 @@ export default class LaunchBar extends React.Component {
   }
 
   async componentDidMount() {
-    const launches = await apiGet(`launches/?launch_year/?launch_success/`)
+    const launches = await apiGet(`launches/past`)
     this.setState({ launches })
 
     window.addEventListener('resize', this.handleResize)
@@ -46,42 +46,26 @@ export default class LaunchBar extends React.Component {
     window.removeEventListener('resize', this.handleResize)
   }
 
-
-  // I should refactor
-  // function extracts successful && failed launch years && boolean
-  // counts the total of each per year from boolean
-  // AND reshapes this info into an object of data the bar graph can use
   launchSuccess() {
-    const { launches } = this.state 
-    if (launches.length < 1) { return null }
-    const success = {2006: 0, 2007: 0}
-    const fail = {2009: 0, 2010: 0, 2012: 0, 2013: 0, 2014: 0, 2017: 0, 2018: 0}
-    launches.forEach(data => {
-      if (!success[data.launch_year] && data.launch_success === true) {
-        success[data.launch_year] = 1
-      } else if (data.launch_success === true) {
-        success[data.launch_year] += 1
-      }
+    const { launches } = this.state
+    const years = launches.map(data => data.launch_year)
+                          .sort()
+                          .filter((year, idx, ary) => !idx || year !== ary[idx - 1])
+    const failData = []
+    const successData = []
 
-      if (!fail[data.launch_year] && data.launch_success === false) {
-        fail[data.launch_year] = 1
-      } else if (data.launch_success === false) {
-        fail[data.launch_year] += 1
+    launches.forEach((data, idx) => {
+      if (data.launch_success === false) {
+          failData.push({x: data.launch_year, y: 1})
+      } else if (years[idx] !== undefined){
+          failData.push({x: years[idx], y: 0})
+      }
+      if (data.launch_success === true) {
+        successData.push({x: data.launch_year, y: 1})
+      } else if (years[idx] !== undefined) {
+        successData.push({x: years[idx], y: 0})
       }
     })
-    
-    const successYears = Object.keys(success)
-    const successTrips = Object.values(success)
-    const failYears = Object.keys(fail)
-    const failTrips = Object.values(fail)
-    let successData = []
-    let failData = []
-    for (let i = 0; i < successYears.length; i++) {
-        successData.push({x: successYears[i], y: successTrips[i]})
-    }
-    for (let i = 0; i < failYears.length; i++) {
-      failData.push({x: failYears[i], y: failTrips[i]})
-    }
     
     this.setState({ successData, failData })
   }
@@ -90,25 +74,44 @@ export default class LaunchBar extends React.Component {
    const { successData, failData, width } = this.state 
 
     return (
-      <Bar>
-        <XYPlot width={width} height={300} stackBy="y" xType="ordinal">
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <VerticalBarSeries data={failData} color='orange'/>
-          <VerticalBarSeries data={successData} color='white'/>
-        </XYPlot>
-        <Wrapper>
-          <WhiteKey></WhiteKey>
-          <Description>Successful Missions</Description>
-          <OrangeKey></OrangeKey>
-          <Description>Failed Missions</Description>
-        </Wrapper>
-      </Bar>
-    );
+      <>
+        {(successData.length < 1 && failData.length < 1) ?
+        <Content>
+          <Loading>No Bars To Show</Loading>
+        </Content>
+        :
+        <Bar>
+          <XYPlot width={width} height={300} stackBy="y" xType="ordinal">
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis />
+            <YAxis />
+            <VerticalBarSeries data={failData} color='orange'/>
+            <VerticalBarSeries data={successData} color='white'/>
+          </XYPlot>
+          <Wrapper>
+            <WhiteKey></WhiteKey>
+            <Description>Successful Missions</Description>
+            <OrangeKey></OrangeKey>
+            <Description>Failed Missions</Description>
+          </Wrapper>
+        </Bar>
+        }
+      </>
+    )
   }
 }
+
+const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;
+
+const Loading = styled.div`
+  font-size: 12px;
+`;
 
 const Bar = styled.div`
   margin-top: 80px;

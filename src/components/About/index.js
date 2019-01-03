@@ -36,8 +36,13 @@ export default class About extends Component {
                     id="page3">
                     <Tween
                     animation={{ y: 0, opacity: 1 }}
-                    key="7">
-                        <Content>    
+                    key="3">
+                        <Content> 
+                            {company.length < 1 ? 
+                            <Info>
+                                <Loading>No Info To Show</Loading>
+                            </Info>
+                            :
                             <Tabs>
                                 <Folder>
                                     <StyledTab>ABOUT</StyledTab>
@@ -65,6 +70,7 @@ export default class About extends Component {
                                     </List> 
                                 </TabPanel>
                             </Tabs>
+                            }   
                         </Content>
                     </Tween>
                 </Scroll>
@@ -112,6 +118,17 @@ const Content = styled.div`
         width: 95%;
         height: 75vh;
     }
+`;
+
+const Info = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;
+
+const Loading = styled.div `
+  font-size: 12px;
 `;
 
 const Folder = styled(TabList)`
@@ -186,23 +203,21 @@ const Tween = styled(TweenOne)`
 `;
 
 const HeroWrapper = styled.div `
-  position: absolute;
-  top: 3000px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #cccccc;
-  height: 1000px; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  overflow: hidden;
+    position: absolute;
+    top: 3000px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    height: 1000px; 
+    z-index: -1;
+    overflow: hidden;
 `;
 
 const HeroImage = styled.img `
-    width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    height: 100%;
 `;

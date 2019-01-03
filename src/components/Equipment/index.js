@@ -9,34 +9,20 @@ export default class Equipment extends Component {
     this.state = {
       rockets: [],
       roadster: [],
-      imageSwitch: false,
+      imageSwitch: 'a',
     }
 
     this.switchImage = this.switchImage.bind(this)
-    this.handleScroll = this.handleScroll.bind(this)
   }
 
     async componentDidMount() {
         const rockets = await apiGet(`rockets`)
         const roadster = await apiGet(`roadster`)
         this.setState({ rockets, roadster })
-
-        window.addEventListener('scroll', this.handleScroll)
     }
 
-    switchImage() {
-        const { imageSwitch } = this.state 
-        this.setState({ imageSwitch: !imageSwitch })
-    }
-
-    handleScroll() {
-        if (window.scrollY < 965) {
-            this.setState({imageSwitch: false })
-        }
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll)
+    switchImage(e) {
+        this.setState({ imageSwitch: e })
     }
 
     render() {

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import HorizontalTimeline from 'react-horizontal-timeline'
 import LaunchBar from '../LaunchBar'
+import TweenOne from 'rc-tween-one'
 
 import styled from 'styled-components'
 
@@ -23,7 +24,7 @@ export default class HistoryCard extends Component {
         return (
             <Page>
                 <HeroWrapper>
-                    {imageSwitch ? 
+                    {imageSwitch === 'b' ? 
                     <HeroImage src={`https://farm1.staticflickr.com/967/42025498972_d022e2bf29_k.jpg`} /> :
                     <HeroImage src={`https://farm2.staticflickr.com/1786/29700000688_49fdf9342e_k.jpg`} />
                     }
@@ -31,12 +32,15 @@ export default class HistoryCard extends Component {
                 <Scroll
                     playScale={1}
                     id="page2">
+                    <Tween
+                animation={{ y: 0, opacity: 1 }}
+                key="2">
                     <Content> 
                         <Tabs>
                             <Title>HISTORICAL EVENTS</Title>   
                             <Folder>
-                                <StyledTab onClick={() => switchImage()}>TIMELINE</StyledTab>
-                                <StyledTab onClick={() => switchImage()}>LAUNCH SUCCESS</StyledTab>
+                                <StyledTab onClick={(e) => switchImage('a', e)}>TIMELINE</StyledTab>
+                                <StyledTab onClick={(e) => switchImage('b', e)}>LAUNCH SUCCESS</StyledTab>
                             </Folder>
                         
                             <TabPanel>
@@ -67,6 +71,7 @@ export default class HistoryCard extends Component {
                             </TabPanel>
                         </Tabs>
                     </Content>
+                    </Tween>
                 </Scroll>
             </Page>
         )
@@ -74,16 +79,23 @@ export default class HistoryCard extends Component {
  }
 
  const RenderInfo = ({history, value }) => {
-    if (history.length < 1) { return null }
 
     return (
         <>
-            <SubTitle>{history[value].title}</SubTitle>
-            <Description>Flight Number: {history[value].flight_number}</Description>
-            <Description>{history[value].details}</Description>
-            <Button>
-                <Link href={history[value].links.article} alt="spaceX article" target="_blank">More Info</Link>
-            </Button>
+            {history.length < 1 ? 
+                <Info>
+                    <Loading>No Info to Show</Loading>
+                </Info>
+            :
+            <>
+                <SubTitle>{history[value].title}</SubTitle>
+                <Description>Flight Number: {history[value].flight_number}</Description>
+                <Description>{history[value].details}</Description>
+                <Button>
+                    <Link href={history[value].links.article} alt="spaceX article" target="_blank">More Info</Link>
+                </Button>
+            </>
+            }
         </>
     ) 
  }
@@ -130,7 +142,7 @@ const Content = styled.div`
 
     @media all and (max-width: 768px) {
         width: 95%;
-        height: 75vh;
+        height: 95vh;
     }
 `;
 
@@ -205,6 +217,17 @@ const Wrapper = styled.div`
     padding: 50px 20px;
 `;
 
+const Info = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;
+
+const Loading = styled.div `
+  font-size: 12px;
+`;
+
 const SubTitle = styled.h3`
     font-size: 30px;
     color: #fff;
@@ -238,24 +261,27 @@ const Link = styled.a`
     color: #A7A8A8;
 `;
 
+const Tween = styled(TweenOne)`
+    opacity: 0;
+    transform: translateY(100px);
+`;
+
 const HeroWrapper = styled.div `
-  position: absolute;
-  top: 2000px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #cccccc;
-  height: 1000px; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  overflow: hidden;
+    position: absolute;
+    top: 2000px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    height: 1000px; 
+    z-index: -1;
+    overflow: hidden;
 `;
 
 const HeroImage = styled.img `
-    width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    height: 100%;
 `;

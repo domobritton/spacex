@@ -2,23 +2,42 @@ import React from 'react'
 import styled from 'styled-components'
 
 export const RocketCard = ({ rockets }) => {
-    return rockets.map(data => (
-          <React.Fragment key={data.id}>
-            <List>
-                <Item>Rocket: {data.rocket_name}</Item>
-                <Item>First Flight: {data.first_flight}</Item>
-                <Item>Cost Per Launch: $ {data.cost_per_launch}</Item>
-            </List>
-            <Description>
-                {data.description}
-                <Button>
-                    <Link href={data.wikipedia} alt='wikipedia link' target='_blank'>MORE INFO</Link>
-                </Button>
-            </Description>
-          </React.Fragment>
+    if (rockets.length < 1) {
+        return (
+            <Content>
+                <Loading>No Info To Show</Loading>
+            </Content>
         )
-    )
+    } else {
+        return rockets.map(data => (
+              <React.Fragment key={data.id}>
+                <List>
+                    <Item>Rocket: {data.rocket_name}</Item>
+                    <Item>First Flight: {data.first_flight}</Item>
+                    <Item>Cost Per Launch: $ {data.cost_per_launch}</Item>
+                </List>
+                <Description>
+                    {data.description}
+                    <Button>
+                        <Link href={data.wikipedia} alt='wikipedia link' target='_blank'>MORE INFO</Link>
+                    </Button>
+                </Description>
+              </React.Fragment>
+            )
+        )
+    }
 }
+
+const Content = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;
+
+const Loading = styled.div `
+  font-size: 12px;
+`;
 
 const List = styled.ul `
     display: flex;
@@ -32,7 +51,7 @@ const List = styled.ul `
         margin: 40px;
     }
 `;
-List.displayName = 'List'
+// List.displayName = 'List'
 
 const Item = styled.li `
     list-style: none;
@@ -40,7 +59,7 @@ const Item = styled.li `
     font-size: 12px;
     font-weight: bold;
 `;
-Item.displayName = 'Item'
+// Item.displayName = 'Item'
 
 const Description = styled.div `
     position: relative;
@@ -51,7 +70,7 @@ const Description = styled.div `
         margin: 40px;
     }
 `;
-Description.displayName = 'Description'
+// Description.displayName = 'Description'
 
 const Button = styled.button `
     position: absolute;
@@ -71,10 +90,10 @@ const Button = styled.button `
         color: #ffffff;
     }
 `;
-Button.displayName = 'Button'
+// Button.displayName = 'Button'
 
 const Link = styled.a `
     text-decoration: none;
     color: inherit;
 `;
-Link.displayName = 'Link'
+// Link.displayName = 'Link'

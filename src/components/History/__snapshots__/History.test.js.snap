@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <HistoryCard
   handleClick={[Function]}
   history={Array []}
-  imageSwitch={false}
+  imageSwitch="a"
   switchImage={[Function]}
   value={0}
 />

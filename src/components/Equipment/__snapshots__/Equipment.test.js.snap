@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <EquipmentCard
-  imageSwitch={false}
+  imageSwitch="a"
   roadster={Array []}
   rockets={Array []}
   switchImage={[Function]}

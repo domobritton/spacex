@@ -3,34 +3,34 @@
 exports[`renders correctly 1`] = `
 Array [
   <ul
-    class="sc-bdVaJa hmxnZd"
+    class="sc-htpNat lgZBte"
   >
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       Rocket: Falcon9
     </li>
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       First Flight: 2018-02-06
     </li>
     <li
-      class="sc-bwzfXH eEHmLi"
+      class="sc-bxivhb fnFCAt"
     >
       Cost Per Launch: $ 9000000
     </li>
   </ul>,
   <div
-    class="sc-htpNat jfsnjd"
+    class="sc-ifAKCX iwhyBn"
   >
     it launched
     <button
-      class="sc-bxivhb jMglcQ"
+      class="sc-EHOje dCMLGJ"
     >
       <a
         alt="wikipedia link"
-        class="sc-ifAKCX iopqdy"
+        class="sc-bZQynM iubAeK"
         href="its a spacex rocket"
         target="_blank"
       >

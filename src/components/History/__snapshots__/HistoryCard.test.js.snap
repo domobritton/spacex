@@ -2,23 +2,120 @@
 
 exports[`renders correctly 1`] = `
 <div
-  class="sc-EHOje gzOBcp"
+  class="sc-gzVnrw fTkkGR"
 >
   <div
-    class="sc-kAzzGY cYqUoa"
+    class="sc-dxgOiQ eMOHOj"
   >
     <img
-      class="sc-chPdSV lkPvjO"
+      class="sc-ckVGcZ hZwfFn"
       src="https://farm2.staticflickr.com/1786/29700000688_49fdf9342e_k.jpg"
     />
   </div>
   <div
-    class="sc-bZQynM jfmSbJ"
+    class="sc-htoDjs jRJYCt"
     id="page2"
   >
     <div
-      class="sc-gzVnrw eEXcKW"
-    />
+      class="sc-kpOJdX iYAQkk"
+    >
+      <div
+        class="sc-dnqmqq iuFvxT"
+      >
+        <div
+          class="react-tabs"
+          data-tabs="true"
+        >
+          <h2
+            class="sc-VigVT jlCMPZ"
+          >
+            HISTORICAL EVENTS
+          </h2>
+          <ul
+            class="sc-iwsKbI jVdfMo"
+            role="tablist"
+          >
+            <li
+              aria-controls="react-tabs-1"
+              aria-disabled="false"
+              aria-selected="true"
+              class="sc-gqjmRU cHsxMn react-tabs__tab--selected"
+              id="react-tabs-0"
+              role="tab"
+              tabindex="0"
+            >
+              TIMELINE
+            </li>
+            <li
+              aria-controls="react-tabs-3"
+              aria-disabled="false"
+              aria-selected="false"
+              class="sc-gqjmRU cHsxMn"
+              id="react-tabs-2"
+              role="tab"
+            >
+              LAUNCH SUCCESS
+            </li>
+          </ul>
+          <div
+            aria-labelledby="react-tabs-0"
+            class="react-tabs__tab-panel react-tabs__tab-panel--selected"
+            id="react-tabs-1"
+            role="tabpanel"
+          >
+            <div
+              class="sc-jTzLTM lbWDZG"
+            >
+              <div
+                class="sc-gZMcBi kOdMMx"
+              >
+                <div
+                  data-radium="true"
+                  style="overflow:visible;height:0;width:0"
+                />
+              </div>
+              <div
+                class="sc-fjdhpX pRlAe"
+              >
+                <h3
+                  class="sc-kAzzGY cWSvVf"
+                >
+                  great accomplishment
+                </h3>
+                <div
+                  class="sc-chPdSV jpPvtZ"
+                >
+                  Flight Number: 1
+                </div>
+                <div
+                  class="sc-chPdSV jpPvtZ"
+                >
+                  it was wow
+                </div>
+                <button
+                  class="sc-kgoBCf fxquce"
+                >
+                  <a
+                    alt="spaceX article"
+                    class="sc-kGXeez ixkUfq"
+                    href="this article"
+                    target="_blank"
+                  >
+                    More Info
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-labelledby="react-tabs-2"
+            class="react-tabs__tab-panel"
+            id="react-tabs-3"
+            role="tabpanel"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
