@@ -9,7 +9,6 @@ import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css'
 
 const Element = ScrollAnim.Element
-const ScrollOverPack = ScrollAnim.OverPack
 ScrollAnim.scrollScreen.init({ loop: true })
 
 export const LaunchCard = ({ columnDefs, upcomingRowData, pastRowData, onGridReady }) => {
